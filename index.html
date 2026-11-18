@@ -50,8 +50,11 @@ em { font-style: italic; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 .top.solid { background: rgba(251,248,242,.92); color: var(--ink); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 1px 0 var(--line); }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand .seal { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid currentColor; display: grid; place-items: center; font: 400 21px/1 var(--serif); padding-top: 2px; }
-.brand .name { font: 400 23px/1 var(--serif); letter-spacing: .01em; white-space: nowrap; }
+.brand .logo { height: 58px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,.25)); transition: height .4s var(--ease), filter .4s; }
+.top.solid .brand .logo { height: 50px; filter: none; }
+.sticker { position: absolute; right: -18px; bottom: -26px; width: clamp(150px, 16vw, 220px); transform: rotate(-6deg); filter: drop-shadow(0 14px 24px rgba(20,17,15,.28)); z-index: 3; }
+.story .media { position: relative; }
+.foot-logo { width: clamp(180px, 18vw, 240px); margin-bottom: 24px; }
 .nav { display: flex; align-items: center; gap: 34px; font-size: 14px; font-weight: 500; }
 .nav a { text-decoration: none; opacity: .86; transition: opacity .2s; }
 .nav a:hover { opacity: 1; }
@@ -202,7 +205,8 @@ footer { background: var(--paper); padding: clamp(64px, 8vw, 110px) 0 36px; over
   .nav a:not(.pill) { display: none; }
   .intro .wrap, .story .wrap { grid-template-columns: 1fr; }
   .intro .frame { aspect-ratio: 4 / 3; }
-  .story .frame { aspect-ratio: 4 / 3; order: -1; }
+  .story .frame { aspect-ratio: 4 / 3; }
+  .story .media { order: -1; margin-bottom: 12px; }
   .c1, .c2, .c3, .c4 { grid-column: span 12; aspect-ratio: 4 / 3; }
   .promises, .row { grid-template-columns: 1fr; }
   .step + .step { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.14); }
@@ -215,9 +219,8 @@ footer { background: var(--paper); padding: clamp(64px, 8vw, 110px) 0 36px; over
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .top .wrap { height: 64px; }
-  .brand { gap: 10px; }
-  .brand .name { font-size: 19px; }
-  .brand .seal { width: 32px; height: 32px; font-size: 18px; }
+  .brand .logo, .top.solid .brand .logo { height: 44px; }
+  .sticker { right: 8px; bottom: -22px; width: 130px; }
   .nav .pill { padding: 10px 14px; font-size: 13px; }
   .hero-foot { grid-template-columns: 1fr; gap: 28px; }
   .hero .wrap { padding-top: 110px; }
@@ -238,8 +241,7 @@ footer { background: var(--paper); padding: clamp(64px, 8vw, 110px) 0 36px; over
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Boulevard Soup Co. home">
-      <span class="seal" aria-hidden="true">B</span>
-      <span class="name">Boulevard <em>Soup Co.</em></span>
+      <img class="logo" src="img/badge-sm.png" alt="Boulevard Soup Co., Chicago, IL" width="240" height="167">
     </a>
     <nav class="nav" aria-label="Main">
       <a href="#soups">The soups</a>
@@ -347,9 +349,12 @@ footer { background: var(--paper); padding: clamp(64px, 8vw, 110px) 0 36px; over
 
   <section class="story" id="story" aria-labelledby="story-title">
     <div class="wrap">
-      <div class="frame reveal">
-        <img src="img/ltrain.webp" alt="A Chicago street beneath the elevated train tracks" loading="lazy">
-        <span class="tag">Chicago, IL</span>
+      <div class="media reveal">
+        <div class="frame">
+          <img src="img/ltrain.webp" alt="A Chicago street beneath the elevated train tracks" loading="lazy">
+          <span class="tag">Chicago, IL</span>
+        </div>
+        <img class="sticker" src="img/badge.png" alt="" loading="lazy" width="440" height="306">
       </div>
       <div>
         <p class="eyebrow brick reveal">Our story</p>
@@ -399,7 +404,7 @@ footer { background: var(--paper); padding: clamp(64px, 8vw, 110px) 0 36px; over
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div><p class="pitch">Small-batch soup from a Chicago neighborhood kitchen.</p></div>
+      <div><img class="foot-logo" src="img/badge.png" alt="Boulevard Soup Co." loading="lazy" width="440" height="306"><p class="pitch">Small-batch soup from a Chicago neighborhood kitchen.</p></div>
       <div><h4>Explore</h4><ul><li><a href="#soups">The soups</a></li><li><a href="#craft">How it's made</a></li><li><a href="#story">Our story</a></li><li><a href="#get-it">Get it</a></li></ul></div>
       <div><h4>Say hello</h4><ul><li><a href="mailto:hello@boulevardsoup.com">hello@boulevardsoup.com</a></li><li>Chicago, Illinois</li></ul></div>
     </div>
