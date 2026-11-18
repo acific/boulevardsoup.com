@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boulevard Soup Co.</title>
+<meta name="description" content="Soup made from scratch in a Chicago neighborhood kitchen. First batches coming soon.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%231E2F4D%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia,serif%27 font-size=%2730%27 fill=%27%23FAF5EA%27 text-anchor=%27middle%27%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Caveat:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: paper-label storefront. Arched badge hero, chalkboard band, three promises, story, steps, navy signup band, line-drawn street at the foot. */
+:root {
+  --navy: #1E2F4D;
+  --navy-2: #2A3F63;
+  --paper: #FAF5EA;
+  --cream: #F1E7D2;
+  --brick: #9E3B2C;
+  --olive: #56713A;
+  --stone: #8C877C;
+  --ink: #1B2333;
+  --body: #3D4555;
+  --chalk: #2C312E;
+  --wood: #B98B5E;
+  --display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --text: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+  --hand: 'Caveat', 'Bradley Hand', cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--body); font-family: var(--text); font-size: 18px; line-height: 1.6; }
+img, svg { max-width: 100%; display: block; }
+a { color: var(--navy); }
+:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.label { font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--brick); }
+h2 { font-family: var(--display); font-weight: 400; color: var(--ink); font-size: clamp(34px, 5vw, 52px); line-height: 1.05; margin: 10px 0 0; text-wrap: balance; }
+p { margin: 0; }
+
+/* header */
+.top { border-bottom: 1px solid rgba(30,47,77,.12); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+.mini { font-family: var(--display); font-size: 22px; color: var(--navy); text-decoration: none; letter-spacing: .02em; }
+.mini span { font-family: var(--text); font-size: 11px; font-weight: 600; letter-spacing: .25em; display: block; color: var(--stone); margin-top: -2px; }
+nav { display: flex; gap: 24px; flex-wrap: wrap; }
+nav a { font-size: 14px; font-weight: 500; text-decoration: none; color: var(--navy); }
+nav a:hover { color: var(--brick); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding-block: 56px 72px; }
+.badge { position: relative; background: var(--cream); border: 3px solid var(--navy); border-radius: 50% 50% 22px 22px / 34% 34% 22px 22px; padding: 44px 28px 26px; text-align: center; box-shadow: 0 0 0 8px var(--paper), 0 0 0 10px var(--navy); max-width: 520px; }
+.badge .city { font-size: 14px; font-weight: 600; letter-spacing: .32em; color: var(--navy); }
+.badge .word { font-family: var(--display); font-size: clamp(54px, 8vw, 92px); line-height: .95; color: var(--navy); margin-top: 8px; letter-spacing: .01em; }
+.badge .co { font-family: var(--text); font-weight: 700; font-size: clamp(18px, 2.4vw, 26px); letter-spacing: .3em; color: var(--navy); margin-top: 6px; }
+.badge .sky { margin: 18px auto 0; width: 70%; }
+.badge .sprig { position: absolute; bottom: 30px; width: 54px; }
+.badge .sprig.l { left: 24px; }
+.badge .sprig.r { right: 24px; transform: scaleX(-1); }
+.tagline { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(26px, 3vw, 34px); line-height: 1.15; color: var(--ink); margin: 34px 0 0; padding-left: 50px; position: relative; }
+.tagline::before { content: ""; position: absolute; left: 0; top: .6em; width: 36px; height: 2px; background: var(--brick); }
+.ribbon { display: inline-block; margin-top: 18px; background: var(--navy); color: var(--paper); font-weight: 600; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; padding: 10px 26px; clip-path: polygon(0 0, 100% 0, 97% 50%, 100% 100%, 0 100%, 3% 50%); }
+.hero .lede { margin-top: 22px; max-width: 34em; font-size: 19px; }
+.signup { display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap; max-width: 480px; }
+.signup input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; padding: 14px 16px; border: 2px solid var(--navy); border-radius: 10px; background: #fff; color: var(--ink); }
+.signup button { font: inherit; font-weight: 600; font-size: 16px; padding: 14px 22px; border: 0; border-radius: 10px; background: var(--brick); color: #FFF8EE; cursor: pointer; }
+.signup button:hover { background: #87301F; }
+.note { font-size: 14px; color: var(--stone); margin-top: 10px; min-height: 1.4em; }
+.note.ok { color: var(--olive); font-weight: 600; }
+
+.still { position: relative; min-height: 440px; }
+.still .table { position: absolute; inset: auto 0 0 0; height: 46%; background: linear-gradient(#C49A6C, #A97C51); border-radius: 18px; }
+.still .cloth { position: absolute; left: -10px; bottom: 6%; width: 34%; height: 44%; border-radius: 14px; background:
+  repeating-linear-gradient(0deg, rgba(158,59,44,.85) 0 14px, transparent 14px 28px),
+  repeating-linear-gradient(90deg, rgba(158,59,44,.85) 0 14px, #F3E9DA 14px 28px); transform: rotate(-6deg); opacity: .95; }
+.still .tub { position: absolute; left: 14%; bottom: 14%; width: 44%; filter: drop-shadow(0 18px 18px rgba(27,35,51,.25)); }
+.still .bowl { position: absolute; right: -2%; bottom: 8%; width: 52%; filter: drop-shadow(0 16px 16px rgba(27,35,51,.22)); }
+.steam path { stroke-dasharray: 4 10; animation: rise 3.2s ease-in-out infinite; }
+.steam path:nth-child(2) { animation-delay: .8s; }
+.steam path:nth-child(3) { animation-delay: 1.6s; }
+@keyframes rise { 0% { opacity: 0; transform: translateY(10px); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-14px); } }
+
+/* board */
+.board-band { background: var(--cream); border-block: 1px solid rgba(30,47,77,.1); }
+.board-band .wrap { display: grid; grid-template-columns: 420px 1fr; gap: 56px; align-items: center; padding-block: 72px; }
+.board { background: radial-gradient(ellipse at 30% 20%, #3A403C, var(--chalk) 70%); border: 14px solid var(--wood); border-radius: 6px; box-shadow: inset 0 0 40px rgba(0,0,0,.45), 0 14px 30px rgba(27,35,51,.25); padding: 30px 30px 26px; color: #ECEAE2; font-family: var(--hand); text-align: center; }
+.board .head { font-size: 46px; line-height: 1; }
+.board hr { border: 0; border-top: 2px solid #9DB7D6; width: 60%; margin: 10px auto 18px; opacity: .8; }
+.board .soup { font-size: 40px; line-height: 1.25; }
+.board .chalks { display: flex; gap: 8px; justify-content: flex-start; margin-top: 18px; }
+.board .chalks i { width: 22px; height: 6px; border-radius: 3px; background: #F2EEE4; display: block; }
+.board .chalks i:nth-child(2) { background: #E8B7B0; }
+.board .chalks i:nth-child(3) { background: #BBD3EA; }
+.board-copy p { margin-top: 18px; max-width: 36em; }
+
+/* promises */
+.promises .wrap { padding-block: 84px; }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 40px; border-top: 2px solid var(--navy); }
+.trio div { padding: 28px 28px 8px 0; min-width: 0; }
+.trio div + div { padding-left: 28px; border-left: 1px solid rgba(30,47,77,.18); }
+.trio svg { width: 44px; height: 44px; color: var(--brick); }
+.trio h3 { font-family: var(--display); font-weight: 400; font-size: 28px; color: var(--ink); margin: 14px 0 8px; }
+
+/* story */
+.story { background: var(--paper); }
+.story .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; padding-block: 24px 88px; }
+.polaroid { background: #FFFDF8; padding: 18px 18px 64px; box-shadow: 0 16px 34px rgba(27,35,51,.18); transform: rotate(-3deg); max-width: 420px; position: relative; }
+.polaroid .pic { background: var(--cream); aspect-ratio: 5/4; display: grid; place-items: center; overflow: hidden; }
+.polaroid .cap { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-family: var(--hand); font-size: 30px; color: var(--ink); }
+.story h2 { text-transform: uppercase; font-family: var(--text); font-weight: 700; font-size: clamp(26px, 3.2vw, 36px); letter-spacing: .06em; line-height: 1.2; }
+.story p { margin-top: 18px; max-width: 36em; }
+
+/* steps */
+.steps { background: var(--cream); border-top: 1px solid rgba(30,47,77,.1); }
+.steps .wrap { padding-block: 80px; }
+.path { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.path li { background: var(--paper); border: 1px solid rgba(30,47,77,.14); border-radius: 14px; padding: 26px; min-width: 0; }
+.chip { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+.chip.first { background: var(--olive); color: #F7F4EA; }
+.chip.next { background: var(--navy); color: #F7F4EA; }
+.chip.later { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+.path h3 { font-family: var(--display); font-weight: 400; font-size: 28px; color: var(--ink); margin: 14px 0 6px; }
+
+/* join */
+.join { background: var(--navy); color: #E7ECF4; }
+.join .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; padding-block: 72px; }
+.join h2 { color: var(--paper); }
+.join .label { color: #E9A894; }
+.join .signup input { border-color: var(--paper); }
+.join .note { color: #B9C3D4; }
+.join .note.ok { color: #BFD8A2; }
+
+/* foot */
+footer { background: var(--paper); }
+.street { width: 100%; color: var(--navy); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px 36px; font-size: 14px; color: var(--stone); border-top: 2px solid var(--navy); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .board-band .wrap, .story .wrap, .join .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .still { min-height: 280px; }
+  .ribbon { font-size: 12px; letter-spacing: .12em; padding: 9px 20px; }
+  .trio, .path { grid-template-columns: 1fr; }
+  .trio div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(30,47,77,.18); }
+  nav { display: none; }
+  .board-band .wrap { justify-items: center; }
+  .board { width: 100%; max-width: 420px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mini" href="#top">Boulevard Soup Co.<span>CHICAGO, IL</span></a>
+    <nav aria-label="Main">
+      <a href="#soups">Soups</a>
+      <a href="#story">Our story</a>
+      <a href="#get-it">How to get it</a>
+      <a href="#join">Get updates</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="badge" role="img" aria-label="Boulevard Soup Co., Chicago, IL">
+        <div class="city">CHICAGO, IL</div>
+        <div class="word">BOULEVARD</div>
+        <div class="co">· SOUP CO. ·</div>
+        <svg class="sky" viewBox="0 0 142 34" aria-hidden="true"><path fill="#1E2F4D" d="M0 34V26h8v-5h6v5h5V17h7v-4h3v4h5v9h6V14h7v12h4V6h2V0h1v6h2V0h1v6h2v6h4v14h5V20h8v6h6V12h4V7h1v5h4v14h6V22h7v4h6V15h6v11h5V19h7v7h6V23h8v11Z"/></svg>
+        <svg class="sprig l" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 26 C20 22 38 16 58 4" stroke="#56713A" stroke-width="2" fill="none"/><g fill="#56713A"><ellipse cx="16" cy="18" rx="7" ry="3" transform="rotate(-40 16 18)"/><ellipse cx="22" cy="24" rx="7" ry="3" transform="rotate(10 22 24)"/><ellipse cx="32" cy="12" rx="7" ry="3" transform="rotate(-50 32 12)"/><ellipse cx="38" cy="19" rx="7" ry="3" transform="rotate(0 38 19)"/><ellipse cx="48" cy="6" rx="6" ry="2.6" transform="rotate(-55 48 6)"/></g></svg>
+        <svg class="sprig r" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 26 C20 22 38 16 58 4" stroke="#56713A" stroke-width="2" fill="none"/><g fill="#56713A"><ellipse cx="16" cy="18" rx="7" ry="3" transform="rotate(-40 16 18)"/><ellipse cx="22" cy="24" rx="7" ry="3" transform="rotate(10 22 24)"/><ellipse cx="32" cy="12" rx="7" ry="3" transform="rotate(-50 32 12)"/><ellipse cx="38" cy="19" rx="7" ry="3" transform="rotate(0 38 19)"/><ellipse cx="48" cy="6" rx="6" ry="2.6" transform="rotate(-55 48 6)"/></g></svg>
+      </div>
+      <h1 class="tagline">Chicago roots. Family recipes.</h1>
+      <div class="ribbon">Neighborhood-made · Coming soon</div>
+      <p class="lede">Soup made from scratch in a Chicago neighborhood kitchen, frozen at its best and packed for your table. The first small batches are on the way.</p>
+      <form class="signup" data-endpoint="" novalidate>
+        <label class="sr" for="email-hero" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email-hero" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit">Save me a quart</button>
+      </form>
+      <p class="note" aria-live="polite">We’ll email you once, when pre-orders open.</p>
+    </div>
+
+    <div class="still" aria-hidden="true">
+      <div class="table"></div>
+      <div class="cloth"></div>
+      <svg class="tub" viewBox="0 0 240 280">
+        <defs><linearGradient id="tubg" x1="0" x2="1"><stop offset="0" stop-color="#16243D"/><stop offset=".5" stop-color="#2A3F63"/><stop offset="1" stop-color="#16243D"/></linearGradient></defs>
+        <path d="M22 40 L218 40 L200 268 Q120 280 40 268 Z" fill="#8FA36A"/>
+        <path d="M30 70 L210 70 L198 236 Q120 246 42 236 Z" fill="url(#tubg)"/>
+        <rect x="10" y="20" width="220" height="30" rx="10" fill="#F6F3EC"/>
+        <rect x="10" y="40" width="220" height="10" rx="4" fill="#E2DDD2"/>
+        <ellipse cx="38" cy="168" rx="9" ry="22" fill="#5E8A3A" transform="rotate(-18 38 168)"/>
+        <ellipse cx="202" cy="160" rx="9" ry="22" fill="#5E8A3A" transform="rotate(18 202 160)"/>
+        <text x="120" y="92" text-anchor="middle" font-family="Work Sans, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="2.5" fill="#F1E7D2">CHICAGO, IL</text>
+        <text x="120" y="124" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="30" fill="#F1E7D2">BOULEVARD</text>
+        <text x="120" y="142" text-anchor="middle" font-family="Work Sans, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="3" fill="#F1E7D2">· SOUP CO. ·</text>
+        <rect x="56" y="156" width="128" height="46" rx="6" fill="#F1E7D2" stroke="#B98B5E"/>
+        <text x="120" y="176" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-style="italic" font-size="15" fill="#1E2F4D">Creamy Spinach</text>
+        <text x="120" y="194" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-style="italic" font-size="15" fill="#1E2F4D">Soup</text>
+        <text x="120" y="222" text-anchor="middle" font-family="Work Sans, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#F1E7D2">FAMILY RECIPE · 32 OZ</text>
+      </svg>
+      <svg class="bowl" viewBox="0 0 260 200">
+        <g class="steam" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8">
+          <path d="M100 60 C90 44 112 34 102 16"/>
+          <path d="M130 58 C120 40 142 30 132 10"/>
+          <path d="M160 60 C150 44 172 34 162 16"/>
+        </g>
+        <path d="M14 92 Q130 100 246 92 Q238 176 130 186 Q22 176 14 92 Z" fill="#E9E1D3"/>
+        <path d="M14 92 Q130 100 246 92 Q238 176 130 186 Q22 176 14 92 Z" fill="none" stroke="#A9744A" stroke-width="3"/>
+        <ellipse cx="130" cy="92" rx="116" ry="22" fill="#F4EEE3"/>
+        <ellipse cx="130" cy="94" rx="104" ry="17" fill="#8FA34F"/>
+        <g fill="#4E6B2C" opacity=".7"><circle cx="80" cy="92" r="4"/><circle cx="104" cy="100" r="3"/><circle cx="150" cy="88" r="4"/><circle cx="182" cy="98" r="3"/><circle cx="60" cy="97" r="3"/><circle cx="200" cy="90" r="3"/></g>
+        <g fill="#D9A55A" stroke="#B5803C"><rect x="112" y="80" width="15" height="13" rx="3" transform="rotate(-12 119 86)"/><rect x="132" y="84" width="15" height="13" rx="3" transform="rotate(14 139 90)"/><rect x="122" y="92" width="14" height="12" rx="3"/></g>
+        <path d="M150 82 l6 -8 l4 6 l6 -6" stroke="#4E6B2C" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="board-band" id="soups">
+  <div class="wrap">
+    <div class="board" role="img" aria-label="Chalkboard: Soup of the day, Creamy Spinach, Chicken Noodle">
+      <div class="head">Soup of the Day</div>
+      <hr>
+      <div class="soup">Creamy Spinach</div>
+      <div class="soup">Chicken Noodle</div>
+      <div class="chalks"><i></i><i></i><i></i></div>
+    </div>
+    <div class="board-copy">
+      <div class="label">Straight off the board</div>
+      <h2>Our first soups come from the daily chalkboard.</h2>
+      <p>There are dozens of recipes behind that board. We’re choosing the first few by what neighbors order most, then testing each one frozen and reheated until it tastes like it just came off the stove.</p>
+      <p>The opening lineup is coming soon. Tell us which soup you’d want first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="promises">
+  <div class="wrap">
+    <div class="label">What goes in the tub</div>
+    <h2>Real soup, made the slow way.</h2>
+    <div class="trio">
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M8 20h32v6a16 16 0 0 1-32 0z"/><path d="M4 20h40"/><path d="M18 12c0-3 4-3 4-6M26 12c0-3 4-3 4-6"/></svg>
+        <h3>Cooked from scratch</h3>
+        <p>Stock, vegetables and noodles made in the kitchen, the same way the soup is made every morning.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M14 6h20l-3 36H17z"/><path d="M12 6h24"/><path d="M16 22h16"/></svg>
+        <h3>Small batches</h3>
+        <p>Made in small runs and tasted before a single quart goes out the door.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M24 4v40M7 14l34 20M41 14L7 34"/><path d="M19 8l5 4 5-4M19 40l5-4 5 4"/></svg>
+        <h3>Frozen at its best</h3>
+        <p>Packed and frozen fast, so it reheats like it was just ladled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <figure class="polaroid" style="margin:0">
+      <div class="pic">
+        <svg viewBox="0 0 300 240" aria-label="Line drawing of a brick corner storefront with an awning">
+          <rect width="300" height="240" fill="#F1E7D2"/>
+          <g fill="none" stroke="#1E2F4D" stroke-width="2">
+            <rect x="40" y="40" width="220" height="190"/>
+            <path d="M40 40h220M40 60h220"/>
+            <rect x="62" y="74" width="34" height="40"/><rect x="133" y="74" width="34" height="40"/><rect x="204" y="74" width="34" height="40"/>
+            <path d="M30 136h240l-12 22H42z"/>
+            <rect x="58" y="164" width="70" height="66"/><rect x="172" y="164" width="70" height="66"/><rect x="136" y="170" width="28" height="60"/>
+            <path d="M58 197h70M172 197h70"/>
+          </g>
+          <path d="M30 136h240l-12 22H42z" fill="#1E2F4D"/>
+          <text x="150" y="152" text-anchor="middle" font-family="Work Sans, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#F1E7D2">SOUP · BREAKFAST · LUNCH</text>
+          <g stroke="#B98B5E" stroke-width="1" opacity=".6"><path d="M40 82h22M96 82h37M167 82h37M238 82h22M40 104h22M96 104h37M167 104h37M238 104h22"/></g>
+        </svg>
+      </div>
+      <figcaption class="cap">A family kitchen in Chicago ♡</figcaption>
+    </figure>
+    <div>
+      <div class="label">Our story</div>
+      <h2>Real soup from our neighborhood to yours.</h2>
+      <p>Boulevard Soup Co. started at a family breakfast-and-lunch spot on a Chicago corner, where the soup board is what regulars check first and the take-home quarts sell out.</p>
+      <p>We’re packing those recipes so more people can have them at home, without changing how they’re made or who makes the call on how they taste.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="get-it">
+  <div class="wrap">
+    <div class="label">How to get it</div>
+    <h2>Close to home first.</h2>
+    <ol class="path">
+      <li><span class="chip first">First</span><h3>Pre-order and pick up</h3><p>Reserve frozen quarts online and pick them up in the neighborhood.</p></li>
+      <li><span class="chip next">Next</span><h3>Local delivery</h3><p>Delivered across Chicago, packed cold, on set days each week.</p></li>
+      <li><span class="chip later">Later</span><h3>Neighborhood shops</h3><p>In the freezer case at a few independent grocers near you.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <div>
+      <div class="label">First batch</div>
+      <h2>Be first in line when the first batch is ready.</h2>
+    </div>
+    <div>
+      <form class="signup" data-endpoint="" novalidate>
+        <label for="email-join" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email-join" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit">Get updates</button>
+      </form>
+      <p class="note" aria-live="polite">One email when pre-orders open. No spam.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg class="street" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55">
+      <path d="M0 150V96h40V70h30v26h22V58h18v38h26V40h8V20h4v20h8v56h30V84h28V50h20v46h34V64h22v32"/>
+      <path d="M430 150V30h10V6h3v24h4V6h3v24h10v120"/>
+      <path d="M480 150V60h36v90M530 150V44h28v106M572 150V74h40v76"/>
+      <path d="M640 150V18l10-12 10 12v132"/>
+      <path d="M690 150V66h30v84M736 150V52h24v98M776 150V80h44v70"/>
+      <path d="M860 150V58h22V30h4V18h3v12h4v28h22v92M940 150V86h40v64M990 150V64h30v86M1036 150V92h50v58M1100 150V72h36v78M1150 150V88h50v62"/>
+      <g opacity=".7"><path d="M486 72h24M486 88h24M486 104h24M536 60h16M536 76h16M536 92h16M696 80h18M696 96h18M866 70h40M866 86h40"/></g>
+    </g>
+    <g stroke="currentColor" fill="none" stroke-width="2.2">
+      <path d="M0 112h1200M0 120h1200"/>
+      <path d="M60 120v30M220 120v30M380 120v30M540 120v30M700 120v30M860 120v30M1020 120v30M1180 120v30"/>
+      <path d="M90 120l-30 30M90 120l30 30M410 120l-30 30M410 120l30 30M730 120l-30 30M730 120l30 30M1050 120l-30 30M1050 120l30 30"/>
+    </g>
+    <g fill="var(--paper)" stroke="currentColor" stroke-width="2">
+      <rect x="760" y="80" width="150" height="30" rx="6"/><rect x="914" y="80" width="150" height="30" rx="6"/>
+    </g>
+    <g fill="currentColor"><rect x="774" y="86" width="18" height="10" rx="2"/><rect x="800" y="86" width="18" height="10" rx="2"/><rect x="826" y="86" width="18" height="10" rx="2"/><rect x="852" y="86" width="18" height="10" rx="2"/><rect x="878" y="86" width="18" height="10" rx="2"/><rect x="928" y="86" width="18" height="10" rx="2"/><rect x="954" y="86" width="18" height="10" rx="2"/><rect x="980" y="86" width="18" height="10" rx="2"/><rect x="1006" y="86" width="18" height="10" rx="2"/><rect x="1032" y="86" width="18" height="10" rx="2"/></g>
+  </svg>
+  <div class="wrap">
+    <span>© 2026 Boulevard Soup Co. · Chicago, IL</span>
+    <span>hello@boulevardsoup.com</span>
+  </div>
+</footer>
+
+<script>
+// Set data-endpoint on each form to a form service URL (Formspree, Mailchimp, Buttondown...) to collect real signups.
+document.querySelectorAll('form.signup').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var input = form.querySelector('input[type=email]');
+    var note = form.nextElementSibling;
+    var email = (input.value || '').trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      note.className = 'note';
+      note.textContent = 'Enter an email address like name@example.com.';
+      input.focus();
+      return;
+    }
+    var endpoint = form.getAttribute('data-endpoint');
+    var done = function () {
+      note.className = 'note ok';
+      note.textContent = 'You’re on the list. We’ll email you when pre-orders open.';
+      form.reset();
+    };
+    if (!endpoint) {
+      note.className = 'note';
+      note.textContent = 'Sign-ups open very soon. Please check back in a few days.';
+      return;
+    }
+    fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      .then(function (r) { if (!r.ok) throw new Error(); done(); })
+      .catch(function () {
+        note.className = 'note';
+        note.textContent = 'That didn’t go through. Check your connection and try again.';
+      });
+  });
+});
+</script>
+</body>
+</html>
