@@ -178,6 +178,20 @@ body[data-tone="light"] .dots { color: var(--navy); }
 @keyframes rail { to { transform: translateX(-50%); } }
 .product { padding-bottom: 150px; }
 
+/* ---------- taste (food photos) ---------- */
+.taste { background: radial-gradient(70% 70% at 30% 40%, #2a1f17 0%, #16110d 70%); color: var(--cream); }
+.taste .wrap { display: grid; gap: clamp(26px, 3.4vw, 44px); }
+.taste-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; }
+.taste .kicker, .taste .it { color: var(--peach); }
+.taste .lede { color: rgba(249,238,220,.75); max-width: 40ch; }
+.shots { display: flex; gap: clamp(14px, 1.8vw, 24px); align-items: stretch; }
+.shot { position: relative; margin: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px -30px rgba(0,0,0,.75); flex: var(--ar) 1 0; min-width: 0; }
+.shot img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); transition: transform 7s var(--ease); }
+.on .shot img { transform: scale(1); }
+.shot figcaption { position: absolute; left: 16px; bottom: 16px; padding: 9px 15px; border-radius: 999px; background: rgba(22,17,13,.62); backdrop-filter: blur(6px); font: 400 14px/1 var(--marker); color: var(--cream); }
+.steam-note { position: absolute; right: 18px; top: 18px; font: 700 26px/1 var(--hand); color: var(--peach); transform: rotate(6deg); text-shadow: 0 2px 10px rgba(0,0,0,.6); }
+@media (max-width: 860px) { .shots { flex-direction: column; } .shot { flex: none; } .shot img { height: auto; aspect-ratio: 3 / 2; } .shot.tall { max-width: 420px; align-self: center; width: 100%; } .shot.tall img { aspect-ratio: 4 / 5; } }
+
 /* ---------- 06 lineup chalkboard ---------- */
 .lineup { text-align: center; }
 .lineup .frame { position: relative; padding: clamp(28px, 4vw, 56px); border: 14px solid #8a6a45; border-radius: 10px; box-shadow: inset 0 0 80px rgba(0,0,0,.45), 0 30px 60px rgba(0,0,0,.4); background: radial-gradient(90% 80% at 50% 40%, #2a4a40 0%, #1a332c 70%); }
@@ -420,6 +434,23 @@ body[data-tone="light"] .dots { color: var(--navy); }
     </div>
   </div>
   <div class="tubrail" aria-hidden="true"><div id="rail"></div></div>
+</section>
+
+<!-- 05b TASTE -->
+<section class="slide taste grain" id="taste" data-tone="dark" data-title="Taste it">
+  <div class="wrap">
+    <div class="taste-head">
+      <div>
+        <p class="kicker" data-a="up">See it, taste it</p>
+        <h2 class="h-l" data-a="up" style="--d:.1s">The soup people <span class="it">come back for.</span></h2>
+      </div>
+      <p class="lede" data-a="up" style="--d:.2s">Creamy Spinach, straight from the tub to the bowl. This is what your shoppers take home.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot" style="--ar:1.5; --d:.25s" data-a="up"><img src="../img/sales/spinach-tub.webp" alt="A tub of Boulevard Soup Co. Creamy Spinach Soup with fresh spinach, cream and parmesan, and a bowl of the soup behind it" width="1500" height="1001" loading="lazy"><figcaption>Creamy Spinach &middot; 16 oz</figcaption></figure>
+      <figure class="shot tall" style="--ar:.8; --d:.4s" data-a="up"><img style="object-position:62% 58%" src="../img/sales/spinach-pour.webp" alt="Creamy spinach soup ladled into a bowl topped with croutons and parmesan, Chicago skyline in the window" width="700" height="1278" loading="lazy"><span class="steam-note">mmm&hellip;</span><figcaption>Heat, pour, enjoy</figcaption></figure>
+    </div>
+  </div>
 </section>
 
 <!-- 06 LINEUP -->
