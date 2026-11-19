@@ -126,6 +126,56 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
 .ready .disc.intro-a { transform: translate(-50%, 66%) !important; }
 .ready .fall { visibility: visible; }
 
+/* ---------- Agrumea-style hero ---------- */
+.top .wrap { grid-template-columns: 1fr auto 1fr; }
+.chip { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border: 1.5px solid var(--rust); border-radius: 999px; color: var(--rust); font: 700 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; transition: background .25s, color .25s; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--rust); }
+.chip:hover { background: var(--rust); color: var(--cream); }
+.chip:hover i { background: var(--cream); }
+.right { justify-self: end; display: flex; align-items: center; gap: 12px; }
+.pill.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+.pill.ghost:hover { background: var(--navy); color: var(--cream); }
+.menu-btn { display: inline-flex; align-items: center; border: 0; background: none; padding: 0; cursor: pointer; }
+.menu-btn span { padding: 12px 20px; border: 1.5px solid var(--rust); border-radius: 999px; color: var(--rust); font: 700 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; background: var(--paper); }
+.menu-btn i { width: 40px; height: 40px; border-radius: 50%; background: var(--rust); margin-left: -6px; display: grid; place-items: center; transition: transform .4s var(--ease); }
+.menu-btn i::after { content: ""; width: 8px; height: 8px; background: var(--cream); border-radius: 2px; transform: rotate(45deg); }
+.menu-btn:hover i, .menu-open .menu-btn i { transform: rotate(90deg); }
+.menu { position: fixed; inset: 0; z-index: 90; background: var(--navy); color: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; text-align: center; }
+.menu[hidden] { display: none; }
+.menu nav { display: flex; flex-direction: column; gap: 6px; }
+.menu a { font: 400 clamp(44px, 7vw, 96px)/1.1 var(--display); color: var(--cream); text-decoration: none; transition: color .2s; }
+.menu a:hover { color: #E39A7E; }
+.menu p { margin: 0; font: italic 400 18px/1 var(--italic); color: #E39A7E; }
+.menu-open .top { z-index: 95; background: transparent !important; box-shadow: none !important; }
+.menu-open .top .pill.ghost, .menu-open .top .chip { visibility: hidden; }
+.menu-open body, body.menu-open { overflow: hidden; }
+
+.hero { background: var(--paper); }
+.hero::before { display: none; }
+.tagline { position: absolute; left: 0; right: 0; top: 118px; text-align: center; z-index: 4; font: italic 400 clamp(16px, 1.4vw, 20px)/1.3 var(--italic); color: var(--rust); letter-spacing: 0; }
+.shape { position: absolute; left: 50%; top: 47%; width: min(1250px, 112vw); aspect-ratio: 1; margin-left: calc(min(1250px, 112vw) / -2); z-index: 1; }
+.shape svg { width: 100%; height: 100%; animation: spin 90s linear infinite; }
+.shape text { font: 400 104px var(--display); fill: #D46A45; }
+.js .shape.intro-a { opacity: 1; transform: translateY(70%); transition: transform 1.5s var(--ease); }
+.tubs { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.tub-item { position: absolute; left: 0; top: 0; will-change: transform, filter; }
+.tub-item svg { display: block; width: 100%; height: auto; overflow: visible; }
+.js .tub-item { visibility: hidden; }
+.ready .tub-item { visibility: visible; }
+.fall { z-index: 2; }
+.cue { left: 0; right: 0; bottom: 26px; writing-mode: horizontal-tb; align-items: center; color: var(--cream); font: 400 13px/1 var(--display); letter-spacing: .22em; }
+.cue::after { background: linear-gradient(var(--cream), transparent); }
+@media (max-width: 700px) {
+  .chip { display: none; }
+  .top .wrap { grid-template-columns: 1fr auto; }
+  .pill.ghost { display: none; }
+  .menu-btn span { padding: 10px 16px; }
+  .menu-btn i { width: 36px; height: 36px; }
+  .tagline { top: 92px; }
+  .shape { top: 55%; width: 175vw; margin-left: -87.5vw; }
+  .cue { display: flex; }
+}
+
 /* Ticker */
 .ticker { background: var(--rust); color: var(--cream); overflow: hidden; padding: 18px 0; }
 .ticker .track { display: flex; width: max-content; animation: slide 40s linear infinite; }
@@ -324,39 +374,45 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 
 <header class="top intro-a" id="top">
   <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a href="#soups">The soups</a>
-      <a href="#story">Our story</a>
-      <a href="#get-it">Get it</a>
-    </nav>
+    <a class="chip" href="#story"><i></i>Chicago, IL</a>
     <a class="brand" href="#" aria-label="Boulevard Soup Co. home"><img src="img/badge-sm.webp" alt="Boulevard Soup Co., Chicago, IL" width="240" height="167"></a>
-    <a class="pill" href="#join">Join the list</a>
+    <div class="right">
+      <a class="pill ghost" href="#join">Join the list</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
+    </div>
   </div>
 </header>
 
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Main">
+    <a href="#soups">The soups</a>
+    <a href="#story">Our story</a>
+    <a href="#get-it">How to get it</a>
+    <a href="#join">Join the list</a>
+  </nav>
+  <p>Chicago roots. Family recipes.</p>
+</div>
+
 <main>
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <div class="headline">
-      <p class="label intro-a" style="transition-delay:.15s">Small-batch soup · Chicago, IL</p>
-      <h1 id="hero-title" class="intro-a" style="transition-delay:.25s">Chicago roots. <span class="it">Family recipes.</span></h1>
-      <p class="sub intro-a" style="transition-delay:.4s">Small-batch soup from a Chicago neighborhood kitchen. First batches coming soon.</p>
-    </div>
+    <h1 class="tagline intro-a" style="transition-delay:.3s"><span class="sr">Boulevard Soup Co. </span>Chicago roots. Family recipes.</h1>
 
-    <div class="disc intro-a" aria-hidden="true">
-      <div class="shape"></div>
+    <div class="shape intro-a" aria-hidden="true">
       <svg viewBox="0 0 1000 1000">
-        <defs><path id="ring" d="M500,500 m-445,0 a445,445 0 1,1 890,0 a445,445 0 1,1 -890,0"/></defs>
-        <text><textPath href="#ring">Chicago roots · Family recipes · Neighborhood-made · Small batches · Chicago roots · Family recipes · Neighborhood-made · Small batches ·</textPath></text>
+        <defs><path id="ring" d="M500,500 m-352,0 a352,352 0 1,1 704,0 a352,352 0 1,1 -704,0"/></defs>
+        <polygon points="500,60 844,226 929,598 691,896 309,896 71,598 156,226" fill="#0B2A44" stroke="#0B2A44" stroke-width="90" stroke-linejoin="round"/>
+        <text textLength="2200" lengthAdjust="spacing"><textPath href="#ring">Chicago roots, family recipes, made slow · </textPath></text>
       </svg>
     </div>
 
+    <div class="tubs" id="tubs" aria-hidden="true"></div>
+    <ul class="sr"><li>Creamy Spinach soup</li><li>Chicken Noodle soup</li><li>Soup of the Day</li><li>Seasonal special</li></ul>
+
     <!-- Desktop falling ingredients: --x/--y are where each lands -->
-    <img class="fall d" src="img/fall/bowl-green.webp" alt="A bowl of creamy green soup" style="--x:50%;--y:83%;--w:min(26vw,420px);--r:-4deg;--z:3" data-delay="0.55" data-depth="0.25">
-    <img class="fall d" src="img/fall/bowl-orange.webp" alt="" style="--x:73%;--y:84%;--w:min(15vw,250px);--r:8deg;--z:3" data-delay="0.8" data-depth="0.35">
     <img class="fall d" src="img/fall/carrots.webp" alt="" style="--x:11%;--y:30%;--w:min(15vw,240px);--r:-24deg" data-delay="0.1" data-depth="0.6">
     <img class="fall d" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:88%;--y:28%;--w:min(14vw,230px);--r:14deg" data-delay="0.2" data-depth="0.5">
-    <img class="fall d" src="img/fall/leaf.webp" alt="" style="--x:24%;--y:12%;--w:min(5vw,80px);--r:40deg" data-delay="0.35" data-depth="0.9">
-    <img class="fall d" src="img/fall/tomato-slice.webp" alt="" style="--x:77%;--y:11%;--w:min(5.5vw,90px);--r:-12deg" data-delay="0.45" data-depth="0.8">
+    <img class="fall d" src="img/fall/leaf.webp" alt="" style="--x:27%;--y:24%;--w:min(5vw,80px);--r:40deg" data-delay="0.35" data-depth="0.9">
+    <img class="fall d" src="img/fall/tomato-slice.webp" alt="" style="--x:74%;--y:22%;--w:min(5.5vw,90px);--r:-12deg" data-delay="0.45" data-depth="0.8">
     <img class="fall d" src="img/fall/zucchini.webp" alt="" style="--x:91%;--y:63%;--w:min(15vw,240px);--r:32deg" data-delay="0.3" data-depth="0.45">
     <img class="fall d" src="img/fall/broccoli.webp" alt="" style="--x:8%;--y:68%;--w:min(12vw,190px);--r:-10deg" data-delay="0.25" data-depth="0.5">
     <img class="fall d" src="img/fall/garlic.webp" alt="" style="--x:25%;--y:74%;--w:min(8vw,130px);--r:12deg;--z:3" data-delay="0.65" data-depth="0.4">
@@ -365,12 +421,10 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     <img class="fall d" src="img/fall/pumpkin.webp" alt="" style="--x:97%;--y:92%;--w:min(11vw,180px);--r:-6deg;--z:3" data-delay="0.95" data-depth="0.3">
 
     <!-- Phone set: fewer, bigger -->
-    <img class="fall m" src="img/fall/bowl-green.webp" alt="A bowl of creamy green soup" style="--x:50%;--y:80%;--w:66vw;--r:-4deg;--z:3" data-delay="0.5" data-depth="0.25">
-    <img class="fall m" src="img/fall/bowl-orange.webp" alt="" style="--x:90%;--y:90%;--w:34vw;--r:8deg;--z:3" data-delay="0.75" data-depth="0.35">
-    <img class="fall m" src="img/fall/carrots.webp" alt="" style="--x:12%;--y:57%;--w:30vw;--r:-28deg" data-delay="0.1" data-depth="0.6">
-    <img class="fall m" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:88%;--y:58%;--w:28vw;--r:14deg" data-delay="0.2" data-depth="0.5">
-    <img class="fall m" src="img/fall/tomato-slice.webp" alt="" style="--x:86%;--y:12%;--w:13vw;--r:-12deg" data-delay="0.35" data-depth="0.8">
-    <img class="fall m" src="img/fall/leaf.webp" alt="" style="--x:16%;--y:13%;--w:10vw;--r:40deg" data-delay="0.4" data-depth="0.9">
+    <img class="fall m" src="img/fall/carrots.webp" alt="" style="--x:16%;--y:27%;--w:30vw;--r:-28deg" data-delay="0.1" data-depth="0.6">
+    <img class="fall m" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:84%;--y:28%;--w:28vw;--r:14deg" data-delay="0.2" data-depth="0.5">
+    <img class="fall m" src="img/fall/tomato-slice.webp" alt="" style="--x:62%;--y:19%;--w:12vw;--r:-12deg" data-delay="0.35" data-depth="0.8">
+    <img class="fall m" src="img/fall/leaf.webp" alt="" style="--x:40%;--y:20%;--w:9vw;--r:40deg" data-delay="0.4" data-depth="0.9">
     <img class="fall m" src="img/fall/garlic.webp" alt="" style="--x:12%;--y:91%;--w:20vw;--r:12deg;--z:3" data-delay="0.85" data-depth="0.4">
 
     <div class="cue intro-a" style="transition-delay:1.6s">Scroll to discover</div>
@@ -563,52 +617,147 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     })(t0);
   }
 
-  // ---------- Falling ingredients with a little bounce ----------
-  var items = [];
-  function dropIngredients() {
-    var H = hero.offsetHeight;
-    items = falls.filter(function (el) { return el.offsetParent !== null; }).map(function (el, i) {
-      var cs = getComputedStyle(el);
-      var rEnd = parseFloat(cs.getPropertyValue('--r')) || 0;
-      var landY = el.offsetTop; // CSS top (centre point)
-      return {
-        el: el, rEnd: rEnd,
-        y: -(landY + el.offsetHeight + 80 + Math.random() * 160), vy: 0,
-        spin: (Math.random() < .5 ? -1 : 1) * (120 + Math.random() * 200),
-        delay: parseFloat(el.dataset.delay || 0) * 1000,
-        depth: parseFloat(el.dataset.depth || .4),
-        phase: i * 1.7, settled: false, born: 0
-      };
-    });
-    items.forEach(function (it) { it.y0 = it.y; });
-    var start = performance.now(), last = start;
-    (function frame(now) {
-      var dt = Math.min(.033, (now - last) / 1000); last = now;
-      var t = now - start;
-      var sy = window.scrollY;
-      items.forEach(function (it) {
-        var y = it.y, rot;
-        if (t < it.delay) { it.el.style.transform = 'translate(-50%,-50%) translate3d(0,' + it.y0 + 'px,0)'; return; }
-        if (!it.settled) {
-          it.vy += 2600 * dt;
-          it.y += it.vy * dt;
-          if (it.y >= 0) {
-            it.y = 0;
-            if (it.vy > 260) it.vy = -it.vy * 0.28; else { it.vy = 0; it.settled = true; it.born = now; }
-          }
-          y = it.y;
-        }
-        var fallen = 1 - Math.min(1, Math.abs(it.y) / Math.abs(it.y0));
-        rot = it.rEnd + it.spin * (1 - fallen) * (it.settled ? 0 : 1);
-        var bob = it.settled ? Math.sin((now - it.born) / 900 + it.phase) * 6 * Math.min(1, (now - it.born) / 800) : 0;
-        var tilt = it.settled ? Math.sin((now - it.born) / 1300 + it.phase) * 2 : 0;
-        var lift = -sy * it.depth;
-        it.el.style.transform = 'translate(-50%,-50%) translate3d(0,' + (y + bob + lift).toFixed(1) + 'px,0) rotate(' + (rot + tilt + sy * it.depth * .05).toFixed(2) + 'deg)';
-      });
-      if (sy < H * 1.3 || items.some(function (it) { return !it.settled; })) requestAnimationFrame(frame);
-      else { var resume = function () { if (window.scrollY < H * 1.3) { window.removeEventListener('scroll', resume); last = performance.now(); requestAnimationFrame(frame); } }; window.addEventListener('scroll', resume, { passive: true }); }
-    })(start);
+  // ---------- Hero: tilted soup-tub carousel + falling vegetables ----------
+  var FLAVORS = [
+    { n: ['Creamy', 'Spinach'],  bg: '#0B2A44', leaf: '#7E9140', soup: '#9AA54A', fleck: '#4C5A1F', trim: '#B8873F' },
+    { n: ['Chicken', 'Noodle'],  bg: '#8B3A2B', leaf: '#C2643F', soup: '#E3C47C', fleck: '#B7863F', trim: '#0B2A44' },
+    { n: ['Soup of', 'the Day'], bg: '#5E6F2D', leaf: '#93A44A', soup: '#C4673A', fleck: '#7A3420', trim: '#8B3A2B' },
+    { n: ['Seasonal', 'Special'], bg: '#A8A08B', leaf: '#5E6F2D', soup: '#E39140', fleck: '#9C5420', trim: '#0B2A44' }
+  ];
+  function leaf(x, y, r, s, c) { return '<path transform="translate(' + x + ',' + y + ') rotate(' + r + ') scale(' + s + ')" d="M0 0C14-11 36-8 44 0C36 8 14 11 0 0Z" fill="' + c + '"/><path transform="translate(' + x + ',' + y + ') rotate(' + r + ') scale(' + s + ')" d="M2 0H40" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>'; }
+  function tubSVG(f, i) {
+    var body = 'M28 78 L272 78 L246 334 Q150 352 54 334 Z';
+    return '<svg viewBox="0 0 300 380">' +
+      '<defs>' +
+        '<linearGradient id="sh' + i + '" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset=".1" stop-color="#000" stop-opacity="0"/><stop offset=".2" stop-color="#fff" stop-opacity=".38"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".76" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".34"/></linearGradient>' +
+        '<linearGradient id="ld' + i + '" x1="0" x2="1"><stop offset="0" stop-color="#d8d2c4"/><stop offset=".22" stop-color="#fffdf8"/><stop offset=".7" stop-color="#f1ece2"/><stop offset="1" stop-color="#cfc8b8"/></linearGradient>' +
+        '<clipPath id="bd' + i + '"><path d="' + body + '"/></clipPath>' +
+        '<pattern id="fl' + i + '" width="24" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="6" r="1.7" fill="' + f.fleck + '"/><circle cx="16" cy="13" r="1.2" fill="' + f.fleck + '"/><circle cx="20" cy="3" r=".9" fill="' + f.fleck + '"/></pattern>' +
+      '</defs>' +
+      '<ellipse cx="150" cy="352" rx="120" ry="15" fill="#0B2A44" opacity=".16"/>' +
+      '<g clip-path="url(#bd' + i + ')">' +
+        '<rect x="0" y="70" width="300" height="300" fill="' + f.soup + '"/>' +
+        '<rect x="0" y="70" width="300" height="300" fill="url(#fl' + i + ')" opacity=".7"/>' +
+        '<path d="M0 126 Q150 146 300 126 V380 H0 Z" fill="' + f.bg + '"/>' +
+        leaf(18, 300, -70, 1.5, f.leaf) + leaf(30, 250, -55, 1.2, f.leaf) + leaf(40, 205, -40, 1, f.leaf) +
+        leaf(282, 300, -110, 1.5, f.leaf) + leaf(270, 250, -125, 1.2, f.leaf) + leaf(260, 205, -140, 1, f.leaf) +
+        '<rect x="74" y="214" width="152" height="74" rx="11" fill="#F9EEDC" stroke="' + f.trim + '" stroke-width="2.5"/>' +
+        '<text x="150" y="243" text-anchor="middle" font-family="Bree Serif, Georgia, serif" font-size="23" fill="#0B2A44">' + f.n[0] + '</text>' +
+        '<text x="150" y="266" text-anchor="middle" font-family="Bree Serif, Georgia, serif" font-size="23" fill="#0B2A44">' + f.n[1] + '</text>' +
+        '<text x="150" y="281" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="7.5" letter-spacing="3" fill="' + f.trim + '">SOUP</text>' +
+        '<text x="150" y="312" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="8" letter-spacing="2.6" fill="#F9EEDC" opacity=".9">— FAMILY RECIPE —</text>' +
+      '</g>' +
+      '<image href="img/badge-sm.webp" x="104" y="146" width="92" height="64"/>' +
+      '<path d="' + body + '" fill="url(#sh' + i + ')" stroke="rgba(11,42,68,.28)" stroke-width="1.5"/>' +
+      '<path d="M16 58 L284 58 L284 80 Q150 104 16 80 Z" fill="url(#ld' + i + ')" stroke="#c9c2b2" stroke-width="1"/>' +
+      '<ellipse cx="150" cy="58" rx="134" ry="22" fill="#FBF9F4" stroke="#d6cfbf" stroke-width="1.2"/>' +
+      '<ellipse cx="150" cy="58" rx="114" ry="16" fill="none" stroke="#e4ddd0" stroke-width="2"/>' +
+      '<ellipse cx="150" cy="58" rx="76" ry="11" fill="#0B2A44"/>' +
+      '<text x="150" y="61.5" text-anchor="middle" font-family="Bree Serif, Georgia, serif" font-size="9" letter-spacing="1.5" fill="#F9EEDC">BOULEVARD SOUP CO.</text>' +
+    '</svg>';
   }
+
+  var tubsEl = document.getElementById('tubs');
+  var ROTS = [-16, 9, -7, 15, -11, 6, -14, 10];
+  var YOS = [36, -24, 44, -12, 24, -34, 30, -18];
+  var tubs = [], vegs = [], W = 0, H = 0, spacing = 0, total = 0, offset = 0;
+  function mod(a, n) { return ((a % n) + n) % n; }
+  function buildTubs() {
+    W = hero.offsetWidth; H = hero.offsetHeight;
+    var mobile = W < 700;
+    spacing = mobile ? W * 0.74 : Math.max(320, Math.min(600, W * 0.33));
+    var tw = mobile ? W * 0.62 : Math.max(230, Math.min(470, W * 0.255));
+    var n = Math.max(6, Math.ceil(W / spacing) + 3);
+    total = n * spacing;
+    tubsEl.innerHTML = '';
+    tubs = [];
+    for (var i = 0; i < n; i++) {
+      var d = document.createElement('div');
+      d.className = 'tub-item';
+      d.style.width = tw + 'px';
+      d.innerHTML = tubSVG(FLAVORS[i % FLAVORS.length], i);
+      tubsEl.appendChild(d);
+      tubs.push({ el: d, base: i * spacing, w: tw, h: tw * 380 / 300, rot: ROTS[i % ROTS.length], yo: YOS[i % YOS.length] * (mobile ? .5 : 1), phase: i * 1.3, y: 0, vy: 0, settled: true, delay: 0, spin: 0, blur: -1 });
+    }
+  }
+  buildTubs();
+  var rT; window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(function () { buildTubs(); kick(); }, 200); });
+
+  var running = false, last = 0, start = 0, lastSy = window.scrollY;
+  function kick() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } }
+
+  function arm(it, base, delay) {
+    it.y = -(base + Math.random() * 160); it.y0 = it.y; it.vy = 0; it.settled = false;
+    it.delay = delay; it.spin = (Math.random() < .5 ? -1 : 1) * (90 + Math.random() * 160);
+  }
+  function step(it, dt) {
+    it.vy += 2600 * dt; it.y += it.vy * dt;
+    if (it.y >= 0) { it.y = 0; if (it.vy > 260) it.vy = -it.vy * 0.26; else { it.vy = 0; it.settled = true; it.born = performance.now(); } }
+  }
+
+  function dropIngredients() {
+    start = performance.now();
+    // tubs drop in left to right
+    var order = tubs.map(function (it) { return { it: it, x: mod(it.base - offset + W / 2, total) - spacing }; })
+      .sort(function (a, b) { return a.x - b.x; });
+    order.forEach(function (o, k) { arm(o.it, H * .7 + o.it.h, 0.15 + k * 0.11); });
+    vegs = falls.filter(function (el) { return el.offsetParent !== null; }).map(function (el, i) {
+      var v = { el: el, rEnd: parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, depth: parseFloat(el.dataset.depth || .4), phase: i * 1.7 };
+      arm(v, el.offsetTop + el.offsetHeight + 80, 0.55 + parseFloat(el.dataset.delay || 0));
+      return v;
+    });
+    kick();
+  }
+
+  function frame(now) {
+    var dt = Math.min(.033, (now - last) / 1000); last = now;
+    var t = (now - start) / 1000;
+    var sy = window.scrollY, dsy = sy - lastSy; lastSy = sy;
+    if (!reduce) offset += dt * (W < 700 ? 24 : 32) + dsy * 0.9;
+    tubs.forEach(function (it) {
+      if (!it.settled && t >= it.delay) step(it, dt);
+      var waiting = !it.settled && t < it.delay;
+      var x = mod(it.base - offset + W / 2, total) - spacing;
+      var d = Math.abs(x - W / 2) / W;
+      var blur = Math.min(5, Math.max(0, d - .28) * 11);
+      var sc = 1 - Math.min(.18, d * .2);
+      var cy = H * (W < 700 ? .5 : .58) + it.yo - it.h / 2;
+      var age = it.born ? (now - it.born) / 1000 : 0;
+      var bob = it.settled ? Math.sin(age * 1.1 + it.phase) * 9 * Math.min(1, age) : 0;
+      var fallen = it.y0 ? 1 - Math.min(1, Math.abs(it.y) / Math.abs(it.y0)) : 1;
+      var rot = it.rot + (it.settled ? Math.sin(age * .8 + it.phase) * 2.5 : it.spin * (1 - fallen));
+      var y = (waiting ? it.y0 : it.y) + cy + bob - sy * .32;
+      it.el.style.transform = 'translate3d(' + (x - it.w / 2).toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
+      if (Math.abs(blur - it.blur) > .15) { it.blur = blur; it.el.style.filter = blur > .2 ? 'blur(' + blur.toFixed(1) + 'px)' : ''; }
+    });
+    vegs.forEach(function (it) {
+      if (!it.settled && t >= it.delay) step(it, dt);
+      var waiting = !it.settled && t < it.delay;
+      var age = it.born ? (now - it.born) / 1000 : 0;
+      var fallen = 1 - Math.min(1, Math.abs(it.y) / Math.abs(it.y0));
+      var rot = it.rEnd + (it.settled ? Math.sin(age * .8 + it.phase) * 2 : it.spin * (1 - fallen));
+      var bob = it.settled ? Math.sin(age * 1.1 + it.phase) * 6 * Math.min(1, age) : 0;
+      var y = (waiting ? it.y0 : it.y) + bob - sy * it.depth;
+      it.el.style.transform = 'translate(-50%,-50%) translate3d(0,' + y.toFixed(1) + 'px,0) rotate(' + (rot + sy * it.depth * .05).toFixed(2) + 'deg)';
+    });
+    var busy = tubs.some(function (i) { return !i.settled; }) || vegs.some(function (i) { return !i.settled; });
+    if (sy < H * 1.2 || busy) requestAnimationFrame(frame);
+    else running = false;
+  }
+  window.addEventListener('scroll', function () { if (window.scrollY < H * 1.2 && root.classList.contains('ready')) kick(); }, { passive: true });
+  if (reduce) { requestAnimationFrame(function (n) { last = n; start = n; frame(n); running = false; }); }
+
+  // ---------- Full-screen menu ----------
+  var menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
+  function setMenu(open) {
+    menu.hidden = !open; menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.querySelector('span').textContent = open ? 'Close' : 'Menu';
+    document.body.classList.toggle('menu-open', open); root.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
 
   // ---------- Header ----------
   function onScroll() { top.classList.toggle('solid', window.scrollY > 40); }
