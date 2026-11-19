@@ -414,6 +414,36 @@ html.js:not(.ready) body { background: var(--cream); }
 .backdrop { will-change: transform; animation-play-state: paused; }
 .ready .backdrop { animation-play-state: running; }
 
+/* ---------- Real tubs in the hero ---------- */
+.tub-item img { display: block; width: 100%; height: auto; filter: drop-shadow(0 34px 28px rgba(0,0,0,.5)) drop-shadow(0 6px 8px rgba(0,0,0,.3)); user-select: none; -webkit-user-drag: none; }
+
+/* ---------- The tub: real product scenes ---------- */
+.scenes { background: var(--paper); padding: clamp(90px, 11vw, 160px) 0; }
+.scenes-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(36px, 5vw, 80px); align-items: center; }
+.sc-main { margin: 0; position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 30px 70px rgba(11,42,68,.25); }
+.sc-main img { width: 100%; height: auto; aspect-ratio: 1672 / 941; object-fit: cover; }
+.sc-main figcaption { position: absolute; left: 14px; bottom: 12px; font: 600 10px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.85); background: rgba(0,0,0,.35); padding: 7px 10px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.sc-copy h2 { font-size: clamp(38px, 4.2vw, 64px); margin-top: 18px; }
+.sc-copy > p:not(.label) { margin: 22px 0 0; color: var(--muted); font-size: 18px; max-width: 46ch; }
+.sc-small { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 30px; }
+.sc-small img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; box-shadow: 0 16px 34px rgba(11,42,68,.2); }
+@media (max-width: 900px) { .scenes-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Chalk menu board: all soups ---------- */
+.menuboard { background: var(--navy); padding: 0 0 clamp(90px, 10vw, 140px); }
+.board { position: relative; max-width: 1100px; margin: 0 auto; border: 18px solid #74451f; border-radius: 10px; padding: clamp(30px, 4vw, 56px) clamp(24px, 4vw, 60px);
+  background: radial-gradient(60% 40% at 25% 20%, rgba(255,255,255,.07), rgba(255,255,255,0) 70%), radial-gradient(50% 40% at 80% 75%, rgba(255,255,255,.05), rgba(255,255,255,0) 70%), #262b28;
+  box-shadow: inset 0 0 60px rgba(0,0,0,.7), inset 0 0 0 2px rgba(0,0,0,.45), 0 0 0 2px #4f2e13, inset 0 0 0 1px #a8743f, 0 30px 60px rgba(0,0,0,.45); color: #F4F1EA; text-align: center; overflow: hidden; }
+.board::before { content: ""; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 -.12'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23d)'/%3E%3C/svg%3E") 0 0 / 300px 300px; opacity: .35; mix-blend-mode: screen; pointer-events: none; }
+.mb-k { position: relative; margin: 0; font: 700 26px/1 'Caveat', cursive; color: #F2D27C; filter: url(#chalkify); }
+.mb-h { position: relative; font: 700 clamp(48px, 6vw, 84px)/1 'Caveat', cursive; color: #F6F3EC; margin-top: 8px; filter: url(#chalkify); }
+.mb-h::after { content: ""; display: block; width: min(420px, 70%); height: 10px; margin: 10px auto 0; background: linear-gradient(#9cc6e4,#9cc6e4) 0 1px / 100% 2px no-repeat, linear-gradient(#9cc6e4,#9cc6e4) 14px 7px / 86% 2px no-repeat; opacity: .85; }
+.mb-list { position: relative; list-style: none; counter-reset: s; margin: clamp(26px, 3vw, 40px) 0 0; padding: 0; columns: 3 240px; column-gap: 40px; text-align: left; }
+.mb-list li { counter-increment: s; break-inside: avoid; font: 500 clamp(22px, 1.9vw, 27px)/1.25 'Caveat', cursive; color: #F4F1EA; padding: 6px 0; filter: url(#chalkify); }
+.mb-list li::before { content: counter(s) "."; display: inline-block; min-width: 1.9em; color: #F2D27C; }
+.mb-foot { position: relative; margin: clamp(22px, 3vw, 34px) 0 0; font: 500 22px/1.2 'Caveat', cursive; color: rgba(244,241,234,.8); filter: url(#chalkify); }
+@media (max-width: 600px) { .board { border-width: 12px; } .mb-list { columns: 1; } }
+
 /* Ticker */
 .ticker { background: var(--rust); color: var(--cream); overflow: hidden; padding: 18px 0; }
 .ticker .track { display: flex; width: max-content; animation: slide 40s linear infinite; }
@@ -609,7 +639,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   <div class="flood"><i class="w-top"></i><i class="w-bot"></i></div>
   <script>
     (function () {
-      var soups = [['broth', 'golden broth'], ['tomato', 'tomato soup'], ['squash', 'butternut squash'], ['spinach', 'creamy spinach']];
+      var soups = [['broth', 'chicken noodle'], ['tomato', 'tomato bisque'], ['squash', 'cheese spinach & squash'], ['spinach', 'split pea']];
       var i = 0;
       try { i = (parseInt(localStorage.getItem('bsc-soup') || '-1', 10) + 1) % soups.length; localStorage.setItem('bsc-soup', i); } catch (e) {}
       var el = document.getElementById('loader'); el.setAttribute('data-soup', soups[i][0]);
@@ -633,6 +663,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   <nav aria-label="Main">
     <a href="#soups">The soups</a>
     <a href="#story">Our story</a>
+    <a href="#all-soups">All 23 soups</a>
     <a href="#get-it">How to get it</a>
     <a href="#join">Join the list</a>
   </nav>
@@ -662,10 +693,6 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         <linearGradient id="tAO" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
         <filter id="chalkify" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.3 0 0 0 0.12" result="grain"/><feComposite in="d" in2="grain" operator="in"/></filter>
         <radialGradient id="tShadow"><stop offset="0" stop-color="#0B2A44" stop-opacity=".38"/><stop offset=".6" stop-color="#0B2A44" stop-opacity=".12"/><stop offset="1" stop-color="#0B2A44" stop-opacity="0"/></radialGradient>
-        <pattern id="soup-spinach" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/spinach.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
-        <pattern id="soup-chicken" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/chicken.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
-        <pattern id="soup-tomato" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/tomato.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
-        <pattern id="soup-squash" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/squash.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
       </defs>
     </svg>
 
@@ -720,8 +747,26 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       <h2 id="idea-title" class="rv d1">Soup worth crossing the city for, <span class="it">made to take home.</span></h2>
       <p class="rv d2">For years, the soup has been the reason people come back to a family-run breakfast and lunch spot on a Chicago corner. Boulevard Soup Co. takes the same recipes and the same care, makes them in small batches, and packs them so you can have a proper bowl on a Tuesday night.</p>
       <div class="stats rv d3">
-        <div>40<small>Family recipes</small></div>
+        <div>23<small>Family recipes</small></div>
         <div>1<small>Neighborhood kitchen</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scenes" aria-labelledby="scenes-title">
+    <div class="wrap scenes-grid">
+      <figure class="sc-main rv">
+        <img src="img/scenes/spinach-table.webp" alt="A Boulevard Soup Co. Creamy Spinach tub on a wooden table with fresh spinach, cream, parmesan and a bowl of soup" loading="lazy" width="1672" height="941">
+        <figcaption>Packaging concept</figcaption>
+      </figure>
+      <div class="sc-copy">
+        <p class="label left rv">The tub</p>
+        <h2 id="scenes-title" class="rv d1">Counter soup, <span class="it">ready for your freezer.</span></h2>
+        <p class="rv d2">The same soup that comes out of the kettle at the counter, cooled and sealed in a clear quart tub, so you can see exactly what's inside. Heat it on the stove for a proper bowl at home.</p>
+        <div class="sc-small rv d3">
+          <img src="img/scenes/ladle.webp" alt="Ladling creamy spinach soup into a bowl" loading="lazy" width="700" height="941">
+          <img src="img/scenes/bowl.webp" alt="A bowl of creamy spinach soup with croutons and parmesan" loading="lazy" width="600" height="941">
+        </div>
       </div>
     </div>
   </section>
@@ -742,7 +787,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         <article class="soup s2"><img class="art photo" src="img/chicken.webp" alt="A bowl of chicken and vegetable soup" loading="lazy"><span class="k">The classic</span><h3>Chicken Noodle</h3><p>Slow-simmered and made to warm you up.</p></article>
         <article class="soup s3"><img class="art photo" src="img/vegetable.webp" alt="A bowl of vegetable soup" loading="lazy"><span class="k">Changes daily</span><h3>Soup of the Day</h3><p>Whatever's on the board that morning.</p></article>
         <article class="soup s4"><img class="art" src="img/fall/bowl-orange.webp" alt="A bowl of orange squash soup" style="--r:8deg" loading="lazy"><span class="k">Coming later</span><h3>Seasonal specials</h3><p>A rotating soup for each season.</p></article>
-        <article class="soup s5"><span class="k">From a book of</span><h3>40 family recipes</h3><p class="it">and counting</p></article>
+        <article class="soup s5"><span class="k">From a book of</span><h3>23 family recipes</h3><p class="it">and counting</p></article>
       </div>
       <div class="wrap slider-ui">
         <button class="sbtn prev" type="button" aria-label="Previous soup">&#8592;</button>
@@ -750,6 +795,42 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         <button class="sbtn next" type="button" aria-label="Next soup">&#8594;</button>
       </div>
       <div class="wrap"><p class="fine">Photos show the style of each soup, not the finished product.</p></div>
+    </div>
+  </section>
+
+  <section class="menuboard" id="all-soups" aria-labelledby="board-title">
+    <div class="wrap">
+      <div class="board rv">
+        <p class="mb-k">From the family recipe book</p>
+        <h2 id="board-title" class="mb-h">Soups on rotation</h2>
+        <ol class="mb-list">
+            <li>Chicken Noodle</li>
+            <li>Potato Bacon</li>
+            <li>Cabbage Meatball</li>
+            <li>Split Pea</li>
+            <li>Tomato Bisque</li>
+            <li>Sour Rye with Sausage &amp; Bacon</li>
+            <li>Lentil with Kale</li>
+            <li>Minestrone</li>
+            <li>Creamy Vegetable</li>
+            <li>Lemon Chicken</li>
+            <li>Chicken Tortilla</li>
+            <li>Dill Pickle</li>
+            <li>Sauerkraut with Bacon &amp; Sausage</li>
+            <li>Tomato with Orzo</li>
+            <li>Chili</li>
+            <li>Pepper Sausage Stew</li>
+            <li>Cheese Spinach with Squash</li>
+            <li>Leeks &amp; Onion</li>
+            <li>Toscana</li>
+            <li>Mushroom Barley</li>
+            <li>Beef Goulash</li>
+            <li>Creamy Mushroom</li>
+            <li>Tomato Basil</li>
+        </ol>
+        <p class="mb-foot">23 recipes and counting &middot; a few at a time, made from scratch</p>
+        <span class="mb-chalk" aria-hidden="true"></span>
+      </div>
     </div>
   </section>
 
@@ -989,6 +1070,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     '</svg>';
   }
 
+  var REAL_TUBS = [['t7', 719 / 760], ['t6', 690 / 760], ['t8a', 668 / 760], ['t9', 643 / 760], ['t8b', 614 / 760]];
   var tubsEl = document.getElementById('tubs');
   var ROTS = [-16, 9, -7, 15, -11, 6, -14, 10];
   var YOS = [36, -24, 44, -12, 24, -34, 30, -18];
@@ -1011,9 +1093,10 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       var d = document.createElement('div');
       d.className = 'tub-item';
       d.style.width = tw + 'px';
-      d.innerHTML = tubSVG(FLAVORS[i % FLAVORS.length], i);
+      var R = REAL_TUBS[i % REAL_TUBS.length];
+      d.innerHTML = '<img src="img/tubs/' + R[0] + '.webp" alt="" draggable="false" width="' + Math.round(R[1] * 760) + '" height="760">';
       tubsEl.appendChild(d);
-      tubs.push({ el: d, base: i * spacing, w: tw, h: tw * 400 / 300, rot: ROTS[i % ROTS.length], yo: YOS[i % YOS.length] * (mobile ? .5 : 1), phase: i * 1.3, y: 0, vy: 0, settled: true, delay: 0, spin: 0, blur: -1 });
+      tubs.push({ el: d, base: i * spacing, w: tw, h: tw / R[1], rot: ROTS[i % ROTS.length], yo: YOS[i % YOS.length] * (mobile ? .5 : 1), phase: i * 1.3, y: 0, vy: 0, settled: true, delay: 0, spin: 0, blur: -1 });
     }
   }
   buildTubs();
