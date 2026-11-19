@@ -13,7 +13,7 @@
 <link rel="preload" as="image" href="img/fall/bowl-green.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Libre+Baskerville:ital@1&family=Montserrat:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Libre+Baskerville:ital@1&family=Montserrat:wght@500;600;700&family=Caveat:wght@500;700&display=swap">
 <script>document.documentElement.classList.add('js');</script>
 <style>
 :root {
@@ -36,9 +36,10 @@
   --ease: cubic-bezier(.2,.7,.1,1);
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 500 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
+img[src*="badge"] { height: auto; object-fit: contain; aspect-ratio: 440 / 306; }
 a { color: inherit; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-spacing: -.005em; line-height: 1.02; }
@@ -89,15 +90,15 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
 .nav a { text-decoration: none; padding: 10px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
 .nav a:hover { border-color: var(--rust); }
 .brand { justify-self: center; display: block; }
-.brand img { height: 72px; width: auto; transition: height .4s var(--ease); }
-.top.solid .brand img { height: 54px; }
+.brand img { height: 72px !important; width: auto; transition: height .4s var(--ease); }
+.top.solid .brand img { height: 54px !important; }
 .pill { justify-self: end; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; background: var(--navy); color: var(--cream); font: 700 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border: 0; cursor: pointer; transition: background .25s, transform .25s var(--ease); white-space: nowrap; }
 .pill:hover { background: var(--rust); transform: translateY(-1px); }
 .pill.cream { background: var(--cream); color: var(--navy); }
 .pill.cream:hover { background: #fff; }
 
 /* Hero */
-.hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; background: var(--cream); }
+.hero { position: relative; height: 100svh; contain: paint; min-height: 640px; overflow: hidden; background: var(--cream); }
 .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 40%, rgba(255,255,255,.65), transparent 70%); }
 .headline { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); width: min(980px, 92vw); text-align: center; z-index: 4; }
 .headline .label { margin-bottom: 22px; white-space: nowrap; }
@@ -174,6 +175,69 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
   .tagline { top: 92px; }
   .shape { top: 55%; width: 175vw; margin-left: -87.5vw; }
   .cue { display: flex; }
+}
+
+/* ---------- Cinematic layer ---------- */
+body::after { content: ""; position: fixed; inset: 0; z-index: 120; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .9s steps(6) infinite; }
+@keyframes grain { 0% { background-position: 0 0; } 20% { background-position: -37px 23px; } 40% { background-position: 29px -41px; } 60% { background-position: -17px -13px; } 80% { background-position: 43px 31px; } 100% { background-position: 0 0; } }
+.hero .glow, .hero .vig { position: absolute; inset: 0; pointer-events: none; }
+.hero .glow { z-index: 6; mix-blend-mode: soft-light; background: radial-gradient(55% 45% at 28% 18%, rgba(255,206,150,.85), rgba(255,206,150,0) 70%), radial-gradient(40% 35% at 78% 30%, rgba(255,236,210,.5), rgba(255,236,210,0) 70%); }
+.hero .vig { z-index: 6; background: radial-gradient(125% 95% at 50% 42%, rgba(0,0,0,0) 58%, rgba(20,16,12,.32) 100%); }
+.motes { position: absolute; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+.motes i { position: absolute; bottom: -20px; border-radius: 50%; background: rgba(255,240,215,.9); filter: blur(1.2px); box-shadow: 0 0 10px rgba(255,220,170,.8); opacity: 0; animation: mote linear infinite; }
+@keyframes mote { 0% { transform: translate3d(0,0,0); opacity: 0; } 12% { opacity: .75; } 80% { opacity: .5; } 100% { transform: translate3d(var(--sway), -105vh, 0); opacity: 0; } }
+.fall.fg { z-index: 7; filter: blur(var(--b, 7px)) drop-shadow(0 30px 30px rgba(11,42,68,.25)); }
+.bars i { position: absolute; left: 0; right: 0; height: 9vh; background: #0a0d12; z-index: 8; transition: transform 1.6s cubic-bezier(.7,0,.2,1); }
+.bars i:first-child { top: 0; }
+.bars i:last-child { bottom: 0; }
+.js .bars { display: block; }
+.bars { display: none; }
+.ready .bars i:first-child { transform: translateY(-100%); transition-delay: 1.5s; }
+.ready .bars i:last-child { transform: translateY(100%); transition-delay: 1.5s; }
+.hero.cine { animation: push 2.8s cubic-bezier(.2,.7,.1,1) both; }
+@keyframes push { 0% { transform: scale(1.16); filter: blur(10px) brightness(.8) saturate(.9); } 55% { filter: blur(0) brightness(1) saturate(1); } 100% { transform: scale(1); filter: none; } }
+.sweep { animation: sweep 8s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes sweep { 0%, 55% { transform: translateX(0); } 85%, 100% { transform: translateX(640px); } }
+@media (prefers-reduced-motion: reduce) {
+  body::after, .motes i, .sweep { animation: none; }
+  .hero.cine { animation: none; }
+  .bars { display: none !important; }
+}
+
+/* ---------- Story: polaroids ---------- */
+.story { background: radial-gradient(80% 60% at 20% 40%, rgba(255,255,255,.7), transparent 70%), var(--paper); }
+.story .grid { grid-template-columns: 1.05fr 1fr; }
+.snaps { position: relative; min-height: 640px; }
+.polaroid { position: absolute; margin: 0; background: #fffdf8; padding: 14px 14px 0; box-shadow: 0 2px 2px rgba(0,0,0,.06), 0 18px 40px rgba(11,42,68,.18), 0 40px 80px rgba(11,42,68,.12); transition: transform .8s var(--ease); }
+.polaroid img { width: 100%; height: auto; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.03); }
+.polaroid figcaption { font: 700 clamp(22px, 2vw, 30px)/1.1 'Caveat', cursive; color: var(--navy); text-align: center; padding: 14px 6px 18px; }
+.polaroid figcaption span { color: var(--rust); }
+.p1 { left: 2%; top: 0; width: 46%; transform: rotate(-5deg); z-index: 2; }
+.p1 img { aspect-ratio: 530 / 700; }
+.p2 { right: 0; top: 22%; width: 62%; transform: rotate(4deg); z-index: 3; }
+.p2 img { aspect-ratio: 1158 / 826; }
+.snaps:hover .p1 { transform: rotate(-7deg) translateY(-6px); }
+.snaps:hover .p2 { transform: rotate(5.5deg) translateY(-6px); }
+.tape { position: absolute; width: 110px; height: 30px; background: rgba(249,238,220,.75); box-shadow: 0 1px 3px rgba(0,0,0,.08); z-index: 4; backdrop-filter: blur(1px); }
+.t1 { left: 14%; top: -12px; transform: rotate(-12deg); }
+.t2 { right: 20%; top: calc(22% - 14px); transform: rotate(7deg); }
+.snaps .sticker { right: auto; left: 4%; bottom: 0; top: auto; width: clamp(150px, 15vw, 210px); transform: rotate(-8deg); z-index: 5; }
+.story h2 { font-size: clamp(38px, 4vw, 62px); }
+@media (max-width: 900px) {
+  .story .grid { grid-template-columns: 1fr; }
+  .snaps { min-height: 0; aspect-ratio: 1 / 1.05; margin-bottom: 30px; }
+}
+@media (max-width: 600px) {
+  .snaps .sticker { width: 120px; left: 0; bottom: -10px; }
+  .polaroid { padding: 9px 9px 0; }
+  .polaroid figcaption { padding: 9px 4px 12px; font-size: 19px; }
+  .tape { width: 72px; height: 22px; }
+  .snaps { aspect-ratio: 1 / 1.45; }
+  .p1 { width: 54%; }
+  .p2 { top: 52%; width: 66%; }
+  .t2 { top: calc(52% - 12px); }
 }
 
 /* Ticker */
@@ -414,6 +478,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         <linearGradient id="tDepth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></linearGradient>
         <linearGradient id="tLid" x1="0" x2="1"><stop offset="0" stop-color="#bdb6a8"/><stop offset=".1" stop-color="#e9e5dc"/><stop offset=".24" stop-color="#ffffff"/><stop offset=".34" stop-color="#f6f3ec"/><stop offset=".72" stop-color="#ebe6dc"/><stop offset=".9" stop-color="#d4cdbf"/><stop offset="1" stop-color="#aea697"/></linearGradient>
         <radialGradient id="tLidTop" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#f3efe7"/><stop offset="1" stop-color="#d8d1c3"/></radialGradient>
+        <linearGradient id="tSweep" x1="0" y1="0" x2="1" y2=".25"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
         <linearGradient id="tAO" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
         <radialGradient id="tShadow"><stop offset="0" stop-color="#0B2A44" stop-opacity=".38"/><stop offset=".6" stop-color="#0B2A44" stop-opacity=".12"/><stop offset="1" stop-color="#0B2A44" stop-opacity="0"/></radialGradient>
         <pattern id="soup-spinach" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/spinach.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
@@ -444,6 +509,17 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     <img class="fall m" src="img/fall/tomato-slice.webp" alt="" style="--x:62%;--y:19%;--w:12vw;--r:-12deg" data-delay="0.35" data-depth="0.8">
     <img class="fall m" src="img/fall/leaf.webp" alt="" style="--x:40%;--y:20%;--w:9vw;--r:40deg" data-delay="0.4" data-depth="0.9">
     <img class="fall m" src="img/fall/garlic.webp" alt="" style="--x:12%;--y:91%;--w:20vw;--r:12deg;--z:3" data-delay="0.85" data-depth="0.4">
+
+    <!-- Foreground ingredients, out of focus (depth of field) -->
+    <img class="fall fg d" src="img/fall/carrots.webp" alt="" style="--x:3%;--y:90%;--w:min(30vw,520px);--r:-30deg;--b:8px" data-delay="1.05" data-depth="0.9" data-par="70">
+    <img class="fall fg d" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:101%;--y:16%;--w:min(22vw,380px);--r:18deg;--b:7px" data-delay="1.15" data-depth="1" data-par="80">
+    <img class="fall fg d" src="img/fall/leaf.webp" alt="" style="--x:66%;--y:99%;--w:min(13vw,220px);--r:-40deg;--b:6px" data-delay="1.2" data-depth="0.8" data-par="60">
+    <img class="fall fg m" src="img/fall/tomato-half.webp" alt="" style="--x:96%;--y:96%;--w:42vw;--r:-8deg;--b:6px" data-delay="1.1" data-depth="0.9" data-par="40">
+
+    <div class="motes" id="motes" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="vig" aria-hidden="true"></div>
+    <div class="bars" aria-hidden="true"><i></i><i></i></div>
 
     <div class="cue intro-a" style="transition-delay:1.6s">Scroll to discover</div>
   </section>
@@ -515,15 +591,23 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 
   <section class="story" id="story" aria-labelledby="story-title">
     <div class="wrap grid">
-      <div class="media rv">
-        <div class="frame"><img src="img/ltrain.webp" alt="A Chicago street beneath the elevated train tracks" loading="lazy"></div>
+      <div class="snaps rv">
+        <figure class="polaroid p1">
+          <img src="img/story/chalkboard.webp" alt="The bistro's chalkboard: Soup of the Day, Creamy Spinach, Chicken Noodle" loading="lazy" width="530" height="772">
+          <figcaption>On the board today</figcaption>
+        </figure>
+        <figure class="polaroid p2">
+          <img src="img/story/storefront.webp" alt="The family's breakfast and lunch spot on a Chicago corner" loading="lazy" width="1158" height="826">
+          <figcaption>A family business from Chicago <span aria-hidden="true">&#9825;</span></figcaption>
+        </figure>
+        <span class="tape t1" aria-hidden="true"></span><span class="tape t2" aria-hidden="true"></span>
         <img class="sticker" src="img/badge.webp" alt="" loading="lazy" width="440" height="306">
       </div>
-      <div>
+      <div class="story-copy">
         <p class="label left rv">Our story</p>
-        <h2 id="story-title" class="rv d1">Born on a <span class="it">Chicago corner.</span></h2>
+        <h2 id="story-title" class="rv d1">Real soup from our neighborhood <span class="it">to yours.</span></h2>
         <div class="copy rv d2">
-          <p>It started in a family-run breakfast and lunch spot, where the soup pot is always on and the recipes come from the people behind the counter.</p>
+          <p>It started in a family-run breakfast and lunch spot on a Chicago corner, where the soup pot is always on and the recipes come from the people behind the counter.</p>
           <p>We're not a factory and we don't want to be. Boulevard Soup Co. grows only as fast as we can keep every batch tasting like home.</p>
         </div>
         <p class="pledge rv d3">If it isn't good enough for our own counter, it doesn't go in a container.</p>
@@ -596,6 +680,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 
   // ---------- Loader: counts up with real image progress, then wipes ----------
   function startIntro() {
+    hero.classList.add('cine');
     root.classList.add('ready');
     dropIngredients();
   }
@@ -677,6 +762,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         '<path d="M31 96 Q150 110 269 96" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.6"/>' +
         '<path d="M32 100 Q150 114 268 100" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1"/>' +
         '<rect x="0" y="86" width="300" height="16" fill="url(#tAO)"/>' +
+        '<rect class="sweep" x="-260" y="60" width="240" height="320" fill="url(#tSweep)" style="animation-delay:' + (i * 1.3).toFixed(1) + 's"/>' +
       '</g>' +
       '<path d="' + body + '" fill="none" stroke="rgba(11,42,68,.22)" stroke-width="1.4"/>' +
       // lid
@@ -720,6 +806,25 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   var rT; window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(function () { buildTubs(); kick(); }, 200); });
 
   var running = false, last = 0, start = 0, lastSy = window.scrollY;
+  var mx = 0, my = 0, tmx = 0, tmy = 0;
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      tmx = (e.clientX - r.left) / r.width * 2 - 1; tmy = (e.clientY - r.top) / r.height * 2 - 1; kick();
+    });
+    hero.addEventListener('mouseleave', function () { tmx = 0; tmy = 0; });
+  }
+  var shapeEl = document.querySelector('.shape');
+  // floating dust motes in the light
+  (function () {
+    var box = document.getElementById('motes'); if (!box || reduce) return;
+    var n = window.innerWidth < 700 ? 12 : 26, html = '';
+    for (var k = 0; k < n; k++) {
+      var sz = (2 + Math.random() * 5).toFixed(1);
+      html += '<i style="left:' + (Math.random() * 100).toFixed(1) + '%;width:' + sz + 'px;height:' + sz + 'px;--sway:' + ((Math.random() - .5) * 160).toFixed(0) + 'px;animation-duration:' + (12 + Math.random() * 14).toFixed(1) + 's;animation-delay:-' + (Math.random() * 20).toFixed(1) + 's"></i>';
+    }
+    box.innerHTML = html;
+  })();
   function kick() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } }
 
   function arm(it, base, delay) {
@@ -738,7 +843,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       .sort(function (a, b) { return a.x - b.x; });
     order.forEach(function (o, k) { arm(o.it, H * .7 + o.it.h, 0.15 + k * 0.11); });
     vegs = falls.filter(function (el) { return el.offsetParent !== null; }).map(function (el, i) {
-      var v = { el: el, rEnd: parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, depth: parseFloat(el.dataset.depth || .4), phase: i * 1.7 };
+      var v = { el: el, rEnd: parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0, depth: parseFloat(el.dataset.depth || .4), par: parseFloat(el.dataset.par || 0) || parseFloat(el.dataset.depth || .4) * 40, phase: i * 1.7 };
       arm(v, el.offsetTop + el.offsetHeight + 80, 0.55 + parseFloat(el.dataset.delay || 0));
       return v;
     });
@@ -749,6 +854,8 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     var dt = Math.min(.033, (now - last) / 1000); last = now;
     var t = (now - start) / 1000;
     var sy = window.scrollY, dsy = sy - lastSy; lastSy = sy;
+    mx += (tmx - mx) * Math.min(1, dt * 4); my += (tmy - my) * Math.min(1, dt * 4);
+    if (shapeEl) shapeEl.style.translate = (-mx * 14).toFixed(1) + 'px ' + (-my * 8).toFixed(1) + 'px';
     if (!reduce) offset += dt * (W < 700 ? 24 : 32) + dsy * 0.9;
     tubs.forEach(function (it) {
       if (!it.settled && t >= it.delay) step(it, dt);
@@ -763,7 +870,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       var fallen = it.y0 ? 1 - Math.min(1, Math.abs(it.y) / Math.abs(it.y0)) : 1;
       var rot = it.rot + (it.settled ? Math.sin(age * .8 + it.phase) * 2.5 : it.spin * (1 - fallen));
       var y = (waiting ? it.y0 : it.y) + cy + bob - sy * .32;
-      it.el.style.transform = 'translate3d(' + (x - it.w / 2).toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
+      it.el.style.transform = 'translate3d(' + (x - it.w / 2 + mx * 22).toFixed(1) + 'px,' + (y + my * 12).toFixed(1) + 'px,0) rotate(' + (rot + mx * 3).toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
       if (Math.abs(blur - it.blur) > .15) { it.blur = blur; it.el.style.filter = blur > .2 ? 'blur(' + blur.toFixed(1) + 'px)' : ''; }
     });
     vegs.forEach(function (it) {
@@ -774,7 +881,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       var rot = it.rEnd + (it.settled ? Math.sin(age * .8 + it.phase) * 2 : it.spin * (1 - fallen));
       var bob = it.settled ? Math.sin(age * 1.1 + it.phase) * 6 * Math.min(1, age) : 0;
       var y = (waiting ? it.y0 : it.y) + bob - sy * it.depth;
-      it.el.style.transform = 'translate(-50%,-50%) translate3d(0,' + y.toFixed(1) + 'px,0) rotate(' + (rot + sy * it.depth * .05).toFixed(2) + 'deg)';
+      it.el.style.transform = 'translate(-50%,-50%) translate3d(' + (mx * it.par).toFixed(1) + 'px,' + (y + my * it.par * .6).toFixed(1) + 'px,0) rotate(' + (rot + sy * it.depth * .05).toFixed(2) + 'deg)';
     });
     var busy = tubs.some(function (i) { return !i.settled; }) || vegs.some(function (i) { return !i.settled; });
     if (sy < H * 1.2 || busy) requestAnimationFrame(frame);
