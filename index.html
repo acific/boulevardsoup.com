@@ -55,7 +55,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
 
 /* Loader */
 .loader { display: none; }
-.js .loader { display: grid; position: fixed; inset: 0; z-index: 100; place-items: center; background: var(--cream); }
+.js .loader { display: grid; position: fixed; top: 0; left: 0; right: 0; height: calc(100vh + 160px); height: calc(100lvh + 160px); z-index: 100; place-items: center; padding-bottom: 160px; box-sizing: border-box; overflow: hidden; background: var(--cream); }
 .loader .stage { display: flex; flex-direction: column; align-items: center; gap: 18px; transition: opacity .35s, transform .6s var(--ease); }
 .loader .tub { width: clamp(190px, 21vw, 270px); height: auto; overflow: visible; }
 .loader .wave { animation: wave 1.6s linear infinite; }
@@ -282,7 +282,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 120; pointer-even
 .loader[data-soup="tomato"]  { --s1: #E46C42; --s2: #CC522E; --s3: #B44023; }
 .loader[data-soup="squash"]  { --s1: #F6A94E; --s2: #E98D30; --s3: #D4751F; }
 .loader .cap b { color: var(--s3); font-weight: 700; }
-.loader .flood { position: absolute; left: 0; right: 0; top: 100%; height: 240vh; z-index: 3; pointer-events: none;
+.loader .flood { position: absolute; left: 0; right: 0; top: calc(100% + 48px); height: 240vh; z-index: 3; pointer-events: none;
   background-color: var(--s2);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='220'%3E%3Cellipse cx='84.2' cy='33.2' rx='2.4' ry='0.6' transform='rotate%2896 84.2 33.2%29' fill='%235E6F2D' opacity='0.71'/%3E%3Cellipse cx='236.5' cy='47.2' rx='1.0' ry='1.0' transform='rotate%2843 236.5 47.2%29' fill='%236B7E2E' opacity='0.64'/%3E%3Cellipse cx='215.0' cy='27.2' rx='1.3' ry='1.2' transform='rotate%28171 215.0 27.2%29' fill='%236B7E2E' opacity='0.71'/%3E%3Cellipse cx='12.9' cy='48.6' rx='2.1' ry='0.6' transform='rotate%2875 12.9 48.6%29' fill='%236B7E2E' opacity='0.50'/%3E%3Cellipse cx='80.2' cy='179.5' rx='1.2' ry='1.1' transform='rotate%28115 80.2 179.5%29' fill='%235E6F2D' opacity='0.49'/%3E%3Cellipse cx='185.1' cy='124.2' rx='2.3' ry='1.0' transform='rotate%2896 185.1 124.2%29' fill='%235E6F2D' opacity='0.66'/%3E%3Cellipse cx='240.1' cy='79.5' rx='1.4' ry='0.7' transform='rotate%28140 240.1 79.5%29' fill='%233E4A18' opacity='0.71'/%3E%3Cellipse cx='136.6' cy='192.5' rx='2.6' ry='0.8' transform='rotate%28176 136.6 192.5%29' fill='%233E4A18' opacity='0.68'/%3E%3Cellipse cx='42.9' cy='75.3' rx='3.0' ry='1.0' transform='rotate%28173 42.9 75.3%29' fill='%233E4A18' opacity='0.79'/%3E%3Cellipse cx='149.0' cy='192.6' rx='1.6' ry='1.3' transform='rotate%28107 149.0 192.6%29' fill='%236B7E2E' opacity='0.81'/%3E%3Cellipse cx='17.9' cy='20.6' rx='1.4' ry='1.3' transform='rotate%2812 17.9 20.6%29' fill='%235E6F2D' opacity='0.74'/%3E%3Cellipse cx='258.2' cy='180.8' rx='1.5' ry='0.9' transform='rotate%28120 258.2 180.8%29' fill='%233E4A18' opacity='0.87'/%3E%3Cellipse cx='92.4' cy='134.4' rx='2.0' ry='0.7' transform='rotate%2852 92.4 134.4%29' fill='%234C5A1F' opacity='0.63'/%3E%3Cellipse cx='238.4' cy='109.2' rx='1.2' ry='0.9' transform='rotate%2850 238.4 109.2%29' fill='%234C5A1F' opacity='0.82'/%3E%3Cellipse cx='224.6' cy='61.3' rx='1.8' ry='0.9' transform='rotate%28159 224.6 61.3%29' fill='%234C5A1F' opacity='0.52'/%3E%3Cellipse cx='45.8' cy='51.0' rx='1.4' ry='1.0' transform='rotate%28106 45.8 51.0%29' fill='%235E6F2D' opacity='0.58'/%3E%3Cellipse cx='37.9' cy='117.6' rx='2.3' ry='0.9' transform='rotate%2823 37.9 117.6%29' fill='%236B7E2E' opacity='0.88'/%3E%3Cellipse cx='170.3' cy='162.8' rx='1.9' ry='1.5' transform='rotate%28171 170.3 162.8%29' fill='%236B7E2E' opacity='0.63'/%3E%3Cellipse cx='103.7' cy='22.8' rx='2.3' ry='0.6' transform='rotate%2812 103.7 22.8%29' fill='%234C5A1F' opacity='0.65'/%3E%3Cellipse cx='28.6' cy='132.2' rx='1.0' ry='1.1' transform='rotate%2897 28.6 132.2%29' fill='%235E6F2D' opacity='0.73'/%3E%3Cellipse cx='18.3' cy='45.7' rx='1.7' ry='1.2' transform='rotate%28172 18.3 45.7%29' fill='%236B7E2E' opacity='0.61'/%3E%3Cellipse cx='31.9' cy='186.8' rx='3.2' ry='1.0' transform='rotate%2887 31.9 186.8%29' fill='%233E4A18' opacity='0.51'/%3E%3Cellipse cx='194.9' cy='162.9' rx='1.9' ry='1.3' transform='rotate%2893 194.9 162.9%29' fill='%234C5A1F' opacity='0.88'/%3E%3Cellipse cx='137.3' cy='32.3' rx='2.1' ry='0.5' transform='rotate%2895 137.3 32.3%29' fill='%233E4A18' opacity='0.76'/%3E%3Cellipse cx='67.9' cy='80.7' rx='1.2' ry='1.3' transform='rotate%2896 67.9 80.7%29' fill='%236B7E2E' opacity='0.60'/%3E%3Cellipse cx='58.0' cy='178.5' rx='3.2' ry='1.4' transform='rotate%28145 58.0 178.5%29' fill='%232F3A12' opacity='0.78'/%3E%3Cellipse cx='59.0' cy='113.9' rx='1.7' ry='0.5' transform='rotate%285 59.0 113.9%29' fill='%235E6F2D' opacity='0.66'/%3E%3Cellipse cx='50.3' cy='133.1' rx='1.6' ry='1.4' transform='rotate%28130 50.3 133.1%29' fill='%235E6F2D' opacity='0.88'/%3E%3Cellipse cx='94.8' cy='48.5' rx='1.3' ry='0.7' transform='rotate%2837 94.8 48.5%29' fill='%236B7E2E' opacity='0.89'/%3E%3Cellipse cx='158.7' cy='0.4' rx='3.0' ry='0.9' transform='rotate%28116 158.7 0.4%29' fill='%233E4A18' opacity='0.86'/%3E%3Cellipse cx='203.4' cy='165.0' rx='1.9' ry='0.7' transform='rotate%28142 203.4 165.0%29' fill='%235E6F2D' opacity='0.49'/%3E%3Cellipse cx='246.0' cy='158.8' rx='1.9' ry='1.3' transform='rotate%2815 246.0 158.8%29' fill='%234C5A1F' opacity='0.53'/%3E%3Cellipse cx='33.0' cy='33.3' rx='3.0' ry='1.4' transform='rotate%2826 33.0 33.3%29' fill='%236B7E2E' opacity='0.89'/%3E%3Cellipse cx='170.9' cy='77.1' rx='2.1' ry='0.6' transform='rotate%283 170.9 77.1%29' fill='%233E4A18' opacity='0.69'/%3E%3Cellipse cx='242.7' cy='95.4' rx='2.9' ry='1.4' transform='rotate%2838 242.7 95.4%29' fill='%235E6F2D' opacity='0.55'/%3E%3Cellipse cx='130.3' cy='168.0' rx='1.6' ry='1.1' transform='rotate%28150 130.3 168.0%29' fill='%233E4A18' opacity='0.86'/%3E%3Cellipse cx='92.0' cy='100.8' rx='2.2' ry='1.5' transform='rotate%2876 92.0 100.8%29' fill='%236B7E2E' opacity='0.51'/%3E%3Cellipse cx='39.5' cy='112.3' rx='2.9' ry='1.4' transform='rotate%28110 39.5 112.3%29' fill='%234C5A1F' opacity='0.53'/%3E%3Cellipse cx='123.1' cy='159.5' rx='2.1' ry='0.9' transform='rotate%2893 123.1 159.5%29' fill='%236B7E2E' opacity='0.67'/%3E%3Cellipse cx='201.9' cy='194.3' rx='0.9' ry='0.7' transform='rotate%288 201.9 194.3%29' fill='%233E4A18' opacity='0.68'/%3E%3Cellipse cx='146.0' cy='167.2' rx='3.0' ry='1.0' transform='rotate%28110 146.0 167.2%29' fill='%236B7E2E' opacity='0.72'/%3E%3Cellipse cx='51.8' cy='61.0' rx='2.0' ry='1.4' transform='rotate%2891 51.8 61.0%29' fill='%234C5A1F' opacity='0.76'/%3E%3Cellipse cx='227.9' cy='207.3' rx='1.4' ry='1.1' transform='rotate%28170 227.9 207.3%29' fill='%232F3A12' opacity='0.51'/%3E%3Cellipse cx='31.6' cy='97.3' rx='1.0' ry='0.8' transform='rotate%2813 31.6 97.3%29' fill='%235E6F2D' opacity='0.80'/%3E%3Cellipse cx='233.2' cy='34.0' rx='2.5' ry='1.2' transform='rotate%2826 233.2 34.0%29' fill='%234C5A1F' opacity='0.89'/%3E%3Cellipse cx='57.1' cy='209.6' rx='1.8' ry='1.0' transform='rotate%28178 57.1 209.6%29' fill='%234C5A1F' opacity='0.52'/%3E%3Cellipse cx='112.2' cy='113.4' rx='19' ry='6' fill='%23F3EBC9' opacity='.09' transform='rotate%28-11 112.2 113.4%29'/%3E%3Cellipse cx='187.8' cy='4.3' rx='23' ry='7' fill='%23F3EBC9' opacity='.09' transform='rotate%28-29 187.8 4.3%29'/%3E%3Cellipse cx='86.2' cy='137.3' rx='22' ry='5' fill='%23F3EBC9' opacity='.09' transform='rotate%2829 86.2 137.3%29'/%3E%3Cellipse cx='205.0' cy='213.8' rx='16' ry='6' fill='%23F3EBC9' opacity='.09' transform='rotate%28-28 205.0 213.8%29'/%3E%3Cellipse cx='202.5' cy='59.5' rx='16' ry='7' fill='%23F3EBC9' opacity='.09' transform='rotate%2825 202.5 59.5%29'/%3E%3Cellipse cx='212.9' cy='56.9' rx='16' ry='10' fill='%23F3EBC9' opacity='.09' transform='rotate%284 212.9 56.9%29'/%3E%3C/svg%3E"), linear-gradient(180deg, var(--s1) 0%, var(--s2) 45%, var(--s3) 100%);
   background-size: 260px 220px, 100% 100%; }
@@ -291,9 +291,128 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 120; pointer-even
 .loader .flood .w-bot { bottom: -39px; background: var(--s3); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='40' viewBox='0 0 240 40'%3E%3Cpath d='M0 20 Q30 36 60 20 T120 20 T180 20 T240 20 V0 H0Z' fill='%23000'/%3E%3C/svg%3E") 0 0 / 240px 40px repeat-x; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='40' viewBox='0 0 240 40'%3E%3Cpath d='M0 20 Q30 36 60 20 T120 20 T180 20 T240 20 V0 H0Z' fill='%23000'/%3E%3C/svg%3E") 0 0 / 240px 40px repeat-x; animation: floodWave 1.4s linear infinite reverse; }
 @keyframes floodWave { to { -webkit-mask-position: 240px 0; mask-position: 240px 0; } }
 @keyframes floodRise { 0% { transform: translateY(0); } 100% { transform: translateY(-345vh); } }
-.loader.flood-on .stage { transition: opacity .3s .45s; opacity: 0; }
+.loader.flood-on .stage { transition: opacity .25s 1s; opacity: 0; }
 .loader.clear { background: transparent; }
 .loader.wipe .p1, .loader.wipe .p2 { display: none; }
+
+/* ---------- Phones, landscape and foldables (iPhone Duo) ---------- */
+.top { padding-top: env(safe-area-inset-top, 0px); }
+.wrap { padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+.base .wrap { padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+.cue { bottom: calc(26px + env(safe-area-inset-bottom, 0px)); }
+.menu { padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px); }
+html { -webkit-text-size-adjust: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@media (pointer: coarse) { body::after { animation: none; } }
+@media (max-width: 700px) {
+  .signup input { font-size: 16px; }
+  .menu-btn span { padding: 13px 16px; }
+  .menu-btn i { width: 44px; height: 44px; }
+}
+/* very small screens (iPhone Duo closed, iPhone SE) */
+@media (max-width: 360px) {
+  .title-card { font-size: 16.5vw; }
+  .brand img, .top.solid .brand img { height: 46px !important; }
+  .menu-btn span { padding: 12px 12px; letter-spacing: .14em; }
+}
+/* phones held sideways */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { min-height: 100svh; height: 100svh; }
+  .top .wrap { height: 64px; }
+  .brand img, .top.solid .brand img { height: 46px !important; }
+  .title-card { top: 17%; font-size: min(15vh, 9vw); }
+  .title-card em { font-size: .6em; }
+  .cue { display: none; }
+  .soups .pin { padding: 70px 0; }
+  .soup { height: 78vh; width: 42vw; }
+  .menu a { font-size: min(10vh, 48px); }
+}
+/* near-square screens: iPhone Duo open, small tablets */
+@media (min-width: 640px) and (max-aspect-ratio: 6/5) {
+  .title-card { top: 15%; font-size: min(12.5vw, 150px); }
+  .nav { display: none; }
+}
+/* foldables that report a hinge: keep things off it */
+@media (vertical-viewport-segments: 2) {
+  .title-card { top: 10%; }
+}
+@media (horizontal-viewport-segments: 2) {
+  .story .grid { grid-template-columns: 1fr 1fr; column-gap: calc(env(viewport-segment-left 1 0, 50vw) - env(viewport-segment-right 0 0, 50vw) + 48px); }
+}
+
+@media (max-height: 760px) { .fall.top-sm { display: none !important; } }
+/* the pinned soups section stays clear of the fixed header */
+@media (min-width: 901px) { .soups .pin { padding-top: 76px; box-sizing: border-box; } }
+@media (min-width: 901px) and (max-height: 820px) {
+  .soups .head { margin-bottom: 18px; }
+  .soups .head > p { display: none; }
+  .soups h2 { font-size: clamp(34px, 4.2vw, 56px); margin-top: 8px; }
+  .soups .rail .soup { height: calc(100svh - 250px); min-height: 330px; padding: 16px 20px 18px; }
+  .soups .rail .soup h3 { font-size: clamp(34px, 3vw, 46px); }
+  .soups .rail .soup p { font-size: 20px; }
+  .soups .fine { margin-top: 12px; }
+}
+
+/* ---------- Soup cards as chalkboards ---------- */
+.soups .rail .soup {
+  color: #F4F1EA; border-radius: 8px; border: 15px solid #7a4a24; padding: 24px 24px 24px;
+  display: flex; flex-direction: column; justify-content: flex-start; height: min(62svh, 590px); min-height: 440px;
+  background:
+    radial-gradient(60% 40% at 30% 25%, rgba(255,255,255,.07), rgba(255,255,255,0) 70%),
+    radial-gradient(50% 35% at 75% 70%, rgba(255,255,255,.05), rgba(255,255,255,0) 70%),
+    linear-gradient(170deg, rgba(255,255,255,0) 40%, rgba(255,255,255,.04) 48%, rgba(255,255,255,0) 56%),
+    #262b28;
+  box-shadow: inset 0 0 50px rgba(0,0,0,.65), inset 0 0 0 2px rgba(0,0,0,.45), 0 0 0 2px #4f2e13, inset 0 0 0 1px #a8743f, 0 26px 50px rgba(0,0,0,.4);
+}
+.soups .rail .soup::before { content: ""; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 -.12'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23d)'/%3E%3C/svg%3E") 0 0 / 300px 300px; opacity: .35; mix-blend-mode: screen; pointer-events: none; z-index: 1; }
+.soups .rail .soup .art, .soup .k, .soup h3, .soup p { position: relative; z-index: 2; }
+.soups .rail .soup .art { position: relative; left: auto; top: auto; transform: rotate(var(--r, 0deg)); height: 50%; width: auto; max-width: 88%; margin: 2px auto 16px; object-fit: contain; flex: 0 0 auto; }
+.soups .rail .soup:hover .art { transform: rotate(calc(var(--r, 0deg) - 4deg)) translateY(-4px); }
+.soups .rail .soup .art.photo { height: 44%; aspect-ratio: 1; width: auto; margin-top: 8px; object-fit: cover; }
+.soups .rail .soup .k { margin-top: auto; }
+.soups .rail .soup .art.photo { box-shadow: 0 0 0 5px rgba(244,241,234,.75), 0 18px 34px rgba(0,0,0,.45); filter: saturate(1.05); }
+.soups .rail .soup .k { font: 700 24px/1 'Caveat', cursive; letter-spacing: .01em; text-transform: none; color: #F2D27C; opacity: 1; filter: url(#chalkify); }
+.soups .rail .soup h3 { font: 700 clamp(42px, 3.8vw, 58px)/.95 'Caveat', cursive; color: #F6F3EC; margin-top: 4px; filter: url(#chalkify); text-shadow: 0 0 1px rgba(255,255,255,.35); }
+.soups .rail .soup h3::after { content: ""; display: block; width: 72%; height: 9px; margin-top: 6px;
+  background: linear-gradient(#9cc6e4, #9cc6e4) 0 1px / 100% 2px no-repeat, linear-gradient(#9cc6e4, #9cc6e4) 10px 6px / 82% 2px no-repeat; opacity: .85; }
+.soups .rail .soup p { font: 500 23px/1.15 'Caveat', cursive; color: rgba(244,241,234,.86); max-width: 26ch; filter: url(#chalkify); }
+.soups .rail .soup.s5 h3 { font-size: clamp(44px, 4vw, 60px); }
+.soups .rail .soup.s5 h3::after { margin: 6px auto 0; }
+.soups .rail .soup.s5 .it { font: 700 28px/1 'Caveat', cursive; color: #F2D27C; }
+.soups .fine { color: rgba(249,238,220,.6); }
+@media (max-width: 900px) { .soups .rail .soup { border-width: 12px; border-image-width: 12px; } .soups .rail .soup h3 { font-size: 44px; } }
+
+/* ---------- Soup slider ---------- */
+#soups { height: auto !important; }
+#soups .pin { position: static; height: auto; display: block; overflow: visible; padding: clamp(84px, 9vw, 130px) 0 clamp(60px, 7vw, 100px); }
+#soups .head { margin-bottom: clamp(26px, 3vw, 40px); }
+#soups .head > p { display: block; }
+#soups .rail { display: flex; gap: clamp(16px, 2vw, 28px); overflow-x: auto; overflow-y: hidden; transform: none !important; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; outline: none;
+  padding: 8px max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))) 24px; scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); }
+#soups .rail::-webkit-scrollbar { display: none; }
+#soups .rail.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; user-select: none; }
+#soups .rail .soup { scroll-snap-align: start; flex: 0 0 auto; width: clamp(272px, 27vw, 370px); height: auto; min-height: 0; padding: 22px 22px 24px; }
+#soups .rail .soup .art { height: clamp(170px, 19vw, 240px); max-width: 92%; margin: 4px auto 18px; }
+#soups .rail .soup .art.photo { height: clamp(160px, 17vw, 220px); }
+#soups .rail .soup h3 { font-size: clamp(40px, 3.4vw, 52px); }
+#soups .rail .soup p { font-size: 22px; }
+#soups .rail .soup.s5 { justify-content: center; min-height: 100%; }
+.slider-ui { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 4px; }
+.sbtn { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid rgba(249,238,220,.5); background: transparent; color: var(--cream); font: 600 20px/1 var(--sans); cursor: pointer; transition: background .25s, color .25s, opacity .25s; }
+.sbtn:hover:not(:disabled) { background: var(--cream); color: var(--navy); }
+.sbtn:disabled { opacity: .3; cursor: default; }
+.dots { display: flex; gap: 10px; align-items: center; }
+.dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 6px; background: rgba(249,238,220,.35); cursor: pointer; transition: width .3s var(--ease), background .3s; }
+.dots button.on { width: 28px; background: #E39A7E; }
+@media (max-width: 700px) { #soups .rail .soup { width: 80vw; } .sbtn { width: 46px; height: 46px; } }
+
+/* ---------- Smoother entrance ---------- */
+/* nothing of the page shows (even under Safari's toolbar) until the soup has covered the screen */
+html.js:not(.ready) main, html.js:not(.ready) footer, html.js:not(.ready) .top { visibility: hidden; }
+html.js:not(.ready) body { background: var(--cream); }
+.loader .flood { will-change: transform; }
+.backdrop { will-change: transform; animation-play-state: paused; }
+.ready .backdrop { animation-play-state: running; }
 
 /* Ticker */
 .ticker { background: var(--rust); color: var(--cream); overflow: hidden; padding: 18px 0; }
@@ -541,6 +660,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
         <radialGradient id="tLidTop" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#f3efe7"/><stop offset="1" stop-color="#d8d1c3"/></radialGradient>
         <linearGradient id="tSweep" x1="0" y1="0" x2="1" y2=".25"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
         <linearGradient id="tAO" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+        <filter id="chalkify" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.3 0 0 0 0.12" result="grain"/><feComposite in="d" in2="grain" operator="in"/></filter>
         <radialGradient id="tShadow"><stop offset="0" stop-color="#0B2A44" stop-opacity=".38"/><stop offset=".6" stop-color="#0B2A44" stop-opacity=".12"/><stop offset="1" stop-color="#0B2A44" stop-opacity="0"/></radialGradient>
         <pattern id="soup-spinach" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/spinach.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
         <pattern id="soup-chicken" patternUnits="userSpaceOnUse" x="0" y="80" width="300" height="300"><image href="img/soup/chicken.webp" width="300" height="300" preserveAspectRatio="xMidYMid slice"/></pattern>
@@ -555,18 +675,18 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     <!-- Desktop falling ingredients: --x/--y are where each lands -->
     <img class="fall d" src="img/fall/carrots.webp" alt="" style="--x:8%;--y:56%;--w:min(15vw,240px);--r:-24deg" data-delay="0.1" data-depth="0.6">
     <img class="fall d" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:91%;--y:57%;--w:min(14vw,230px);--r:14deg" data-delay="0.2" data-depth="0.5">
-    <img class="fall d" src="img/fall/leaf.webp" alt="" style="--x:30%;--y:11%;--w:min(5vw,80px);--r:40deg" data-delay="0.35" data-depth="0.9">
-    <img class="fall d" src="img/fall/tomato-slice.webp" alt="" style="--x:70%;--y:11%;--w:min(5.5vw,90px);--r:-12deg" data-delay="0.45" data-depth="0.8">
+    <img class="fall d top-sm" src="img/fall/leaf.webp" alt="" style="--x:30%;--y:11%;--w:min(5vw,80px);--r:40deg" data-delay="0.35" data-depth="0.9">
+    <img class="fall d top-sm" src="img/fall/tomato-slice.webp" alt="" style="--x:70%;--y:11%;--w:min(5.5vw,90px);--r:-12deg" data-delay="0.45" data-depth="0.8">
     <img class="fall d" src="img/fall/zucchini.webp" alt="" style="--x:93%;--y:85%;--w:min(15vw,240px);--r:32deg" data-delay="0.3" data-depth="0.45">
     <img class="fall d" src="img/fall/broccoli.webp" alt="" style="--x:7%;--y:86%;--w:min(12vw,190px);--r:-10deg" data-delay="0.25" data-depth="0.5">
     <img class="fall d" src="img/fall/garlic.webp" alt="" style="--x:25%;--y:74%;--w:min(8vw,130px);--r:12deg;--z:3" data-delay="0.65" data-depth="0.4">
     <img class="fall d" src="img/fall/tomato-half.webp" alt="" style="--x:34%;--y:93%;--w:min(9vw,150px);--r:-8deg;--z:3" data-delay="0.9" data-depth="0.3">
-    <img class="fall d" src="img/fall/squash-slice.webp" alt="" style="--x:5%;--y:14%;--w:min(5vw,82px);--r:22deg" data-delay="0.75" data-depth="0.7">
+    <img class="fall d top-sm" src="img/fall/squash-slice.webp" alt="" style="--x:5%;--y:14%;--w:min(5vw,82px);--r:22deg" data-delay="0.75" data-depth="0.7">
     <img class="fall d" src="img/fall/pumpkin.webp" alt="" style="--x:97%;--y:92%;--w:min(11vw,180px);--r:-6deg;--z:3" data-delay="0.95" data-depth="0.3">
 
     <!-- Phone set: fewer, bigger -->
-    <img class="fall m" src="img/fall/carrots.webp" alt="" style="--x:11%;--y:45%;--w:30vw;--r:-28deg" data-delay="0.1" data-depth="0.6">
-    <img class="fall m" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:89%;--y:46%;--w:28vw;--r:14deg" data-delay="0.2" data-depth="0.5">
+    <img class="fall m" src="img/fall/carrots.webp" alt="" style="--x:11%;--y:51%;--w:30vw;--r:-28deg" data-delay="0.1" data-depth="0.6">
+    <img class="fall m" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:89%;--y:50%;--w:28vw;--r:14deg" data-delay="0.2" data-depth="0.5">
     <img class="fall m" src="img/fall/tomato-slice.webp" alt="" style="--x:88%;--y:13%;--w:11vw;--r:-12deg" data-delay="0.35" data-depth="0.8">
     <img class="fall m" src="img/fall/leaf.webp" alt="" style="--x:12%;--y:13%;--w:9vw;--r:40deg" data-delay="0.4" data-depth="0.9">
     <img class="fall m" src="img/fall/garlic.webp" alt="" style="--x:12%;--y:91%;--w:20vw;--r:12deg;--z:3" data-delay="0.85" data-depth="0.4">
@@ -617,12 +737,17 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
           <p class="rv d2">Our first soups are the ones regulars ask for by name. The full lineup is announced when pre-orders open.</p>
         </div>
       </div>
-      <div class="rail" id="rail">
+      <div class="rail" id="rail" tabindex="0" role="region" aria-label="Our soups, swipe or use the arrows">
         <article class="soup s1"><img class="art" src="img/fall/bowl-green.webp" alt="A bowl of creamy green soup" style="--r:-6deg" loading="lazy"><span class="k">House favorite</span><h3>Creamy Spinach</h3><p>Silky, green and deeply savory.</p></article>
         <article class="soup s2"><img class="art photo" src="img/chicken.webp" alt="A bowl of chicken and vegetable soup" loading="lazy"><span class="k">The classic</span><h3>Chicken Noodle</h3><p>Slow-simmered and made to warm you up.</p></article>
         <article class="soup s3"><img class="art photo" src="img/vegetable.webp" alt="A bowl of vegetable soup" loading="lazy"><span class="k">Changes daily</span><h3>Soup of the Day</h3><p>Whatever's on the board that morning.</p></article>
         <article class="soup s4"><img class="art" src="img/fall/bowl-orange.webp" alt="A bowl of orange squash soup" style="--r:8deg" loading="lazy"><span class="k">Coming later</span><h3>Seasonal specials</h3><p>A rotating soup for each season.</p></article>
         <article class="soup s5"><span class="k">From a book of</span><h3>40 family recipes</h3><p class="it">and counting</p></article>
+      </div>
+      <div class="wrap slider-ui">
+        <button class="sbtn prev" type="button" aria-label="Previous soup">&#8592;</button>
+        <div class="dots" id="dots"></div>
+        <button class="sbtn next" type="button" aria-label="Next soup">&#8594;</button>
       </div>
       <div class="wrap"><p class="fine">Photos show the style of each soup, not the finished product.</p></div>
     </div>
@@ -744,16 +869,17 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 
   // ---------- Loader: counts up with real image progress, then wipes ----------
   function startIntro() {
-    hero.classList.add('cine');
-    root.classList.add('ready');
-    dropIngredients();
+    document.body.style.background = '';
+    dropIngredients();               // places every tub/vegetable at its start point first...
+    root.classList.add('ready');     // ...then reveals them, so nothing flashes in its resting spot
   }
   if (reduce) {
     loader.classList.add('done');
     root.classList.add('ready');
   } else {
     var imgs = [].slice.call(document.querySelectorAll('.hero img, .brand img'));
-    var loaded = 0, shown = 0, t0 = performance.now(), last = t0, finished = false;
+    var loaded = 0, shown = 0, t0 = performance.now(), last = t0, finished = false, fontsReady = !document.fonts;
+    if (document.fonts) document.fonts.ready.then(function () { fontsReady = true; });
     imgs.forEach(function (im) {
       if (im.complete) loaded++;
       else { im.addEventListener('load', function () { loaded++; }); im.addEventListener('error', function () { loaded++; }); }
@@ -770,13 +896,13 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       setTimeout(function () { if (!fired) { fired = true; fn(performance.now()); } }, 80);
     }
     function runFlood() {
-      var vh = window.innerHeight, travel = vh * 3.45, t0 = performance.now(), dur = 2600, cleared = false, started = false;
+      var vh = loader.offsetHeight, pad = 48, travel = vh * 3.45 + pad * 2, t0 = performance.now(), dur = 2600, cleared = false, started = false;
       var ease = function (p) { return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
       (function step(now) {
         var p = Math.min(1, (now - t0) / dur), y = -travel * ease(p);
         floodEl.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
-        if (!cleared && y <= -vh * 1.02) { cleared = true; loader.classList.add('clear'); }       // fully covered
-        if (!started && y <= -vh * 2.25) { started = true; startIntro(); }                       // about to lift away
+        if (!cleared && y <= -(vh * 1.02 + pad)) { cleared = true; loader.classList.add('clear'); document.body.style.background = getComputedStyle(loader).getPropertyValue('--s2').trim(); }       // fully covered
+        if (!started && y <= -(vh * 2.25 + pad)) { started = true; startIntro(); }                       // about to lift away
         if (p < 1) nextFrame(step); else loader.classList.add('done');
       })(t0);
     }
@@ -794,6 +920,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       if (finished) return;
       var dt = Math.min(.1, (now - last) / 1000); last = now;
       var real = imgs.length ? loaded / imgs.length : 1;
+      if (!fontsReady) real = Math.min(real, .9);                // hold at 90% until the fonts are in
       var target = Math.min(real, Math.min(1, (now - t0) / 1800)); // at least ~1.8s so the tub visibly fills
       shown = Math.min(target, shown + dt * 0.9);              // steady count up, time-based
       pctEl.textContent = Math.round(shown * 100);
@@ -865,13 +992,17 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   var tubsEl = document.getElementById('tubs');
   var ROTS = [-16, 9, -7, 15, -11, 6, -14, 10];
   var YOS = [36, -24, 44, -12, 24, -34, 30, -18];
-  var tubs = [], vegs = [], W = 0, H = 0, spacing = 0, total = 0, offset = 0;
+  var tubs = [], vegs = [], W = 0, H = 0, spacing = 0, total = 0, offset = 0, titleBottom = 0;
   function mod(a, n) { return ((a % n) + n) % n; }
   function buildTubs() {
     W = hero.offsetWidth; H = hero.offsetHeight;
     var mobile = W < 700;
-    spacing = mobile ? W * 0.74 : Math.max(320, Math.min(600, W * 0.33));
-    var tw = mobile ? W * 0.62 : Math.max(230, Math.min(470, W * 0.255));
+    var square = !mobile && W / H < 1.2, landscapeShort = H < 520 && W > H;
+    spacing = mobile ? W * 0.74 : square ? W * 0.46 : Math.max(320, Math.min(600, W * 0.33));
+    var tw = mobile ? W * 0.62 : square ? W * 0.36 : Math.max(230, Math.min(470, W * 0.255));
+    tw = Math.min(tw, H * (mobile ? 0.34 : 0.4));
+    if (landscapeShort) { tw = H * 0.42; spacing = tw * 1.35; }
+    var tc = document.querySelector('.title-card'); titleBottom = tc ? tc.offsetTop + tc.offsetHeight : 0;
     var n = Math.max(6, Math.ceil(W / spacing) + 3);
     total = n * spacing;
     tubsEl.innerHTML = '';
@@ -930,7 +1061,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       arm(v, el.offsetTop + el.offsetHeight + 80, 0.55 + parseFloat(el.dataset.delay || 0));
       return v;
     });
-    kick();
+    running = true; last = performance.now(); frame(last);
   }
 
   function frame(now) {
@@ -948,7 +1079,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       var d = Math.abs(x - W / 2) / W;
       var blur = Math.min(5, Math.max(0, d - .28) * 11);
       var sc = 1 - Math.min(.18, d * .2);
-      var cy = H * (W < 700 ? .6 : .66) + it.yo - it.h / 2;
+      var ar = W / H; var base = Math.max(H * (W < 700 ? .6 : ar < 1.2 ? .64 : .66) - it.h / 2, titleBottom + 8); var cy = base + (it.yo + 34) * .5;
       var age = it.born ? (now - it.born) / 1000 : 0;
       var bob = it.settled ? Math.sin(age * 1.1 + it.phase) * 9 * Math.min(1, age) : 0;
       var fallen = it.y0 ? 1 - Math.min(1, Math.abs(it.y) / Math.abs(it.y0)) : 1;
@@ -1009,26 +1140,37 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     window.addEventListener('resize', drift);
   }
 
-  // ---------- Pinned horizontal soup rail ----------
-  var soups = document.getElementById('soups'), rail = document.getElementById('rail');
-  var pinMQ = window.matchMedia('(min-width: 901px)');
-  function sizeRail() {
-    if (!pinMQ.matches) { soups.style.height = ''; rail.style.transform = ''; return; }
-    var extra = Math.max(0, rail.scrollWidth - window.innerWidth);
-    soups.style.height = (window.innerHeight + extra) + 'px';
-    moveRail();
-  }
-  function moveRail() {
-    if (!pinMQ.matches) return;
-    var extra = Math.max(0, rail.scrollWidth - window.innerWidth);
-    var r = soups.getBoundingClientRect();
-    var p = Math.min(1, Math.max(0, -r.top / Math.max(1, soups.offsetHeight - window.innerHeight)));
-    rail.style.transform = 'translate3d(' + (-extra * p).toFixed(1) + 'px,0,0)';
-  }
-  sizeRail();
-  window.addEventListener('resize', sizeRail);
-  window.addEventListener('load', sizeRail);
-  window.addEventListener('scroll', function () { requestAnimationFrame(moveRail); }, { passive: true });
+  // ---------- Soup slider: swipe, drag, arrows, dots ----------
+  (function () {
+    var rail = document.getElementById('rail'); if (!rail) return;
+    var cards = [].slice.call(rail.children);
+    var dotsEl = document.getElementById('dots'), prevB = document.querySelector('.sbtn.prev'), nextB = document.querySelector('.sbtn.next');
+    cards.forEach(function (c, i) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Go to soup ' + (i + 1));
+      b.addEventListener('click', function () { go(i); }); dotsEl.appendChild(b);
+    });
+    function stepW() { return cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth; }
+    function current() { return Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / stepW()))); }
+    function go(i) { i = Math.max(0, Math.min(cards.length - 1, i)); rail.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' }); }
+    function sync() {
+      var i = current(), end = rail.scrollLeft > rail.scrollWidth - rail.clientWidth - 4;
+      if (end) i = cards.length - 1;
+      [].forEach.call(dotsEl.children, function (d, k) { d.classList.toggle('on', k === i); d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      prevB.disabled = rail.scrollLeft < 4; nextB.disabled = end;
+    }
+    prevB.addEventListener('click', function () { go(current() - 1); });
+    nextB.addEventListener('click', function () { go(current() + 1); });
+    rail.addEventListener('scroll', function () { requestAnimationFrame(sync); }, { passive: true });
+    rail.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); } });
+    window.addEventListener('resize', sync); sync();
+    // drag with a mouse (touch already swipes natively)
+    var down = false, sx = 0, sl = 0, moved = false;
+    rail.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; rail.classList.add('dragging'); });
+    window.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; rail.scrollLeft = sl - dx; });
+    window.addEventListener('pointerup', function () { if (!down) return; down = false; rail.classList.remove('dragging'); go(current()); });
+    rail.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  })();
 
   // ---------- Reveal on scroll ----------
   var rv = document.querySelectorAll('.rv');
