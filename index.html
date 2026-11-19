@@ -425,7 +425,7 @@ html.js:not(.ready) body { background: var(--cream); }
 .sc-collage { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); margin-top: clamp(50px, 6vw, 90px); }
 .sc-collage figure { margin: 0; position: relative; overflow: hidden; }
 .sc-collage img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.sc-a { grid-column: 1 / 10; grid-row: 1; aspect-ratio: 1672 / 941; border-radius: 26px; box-shadow: 0 40px 80px -30px rgba(11,42,68,.45); }
+.sc-a { grid-column: 1 / 10; grid-row: 1; aspect-ratio: 3 / 2; border-radius: 26px; box-shadow: 0 40px 80px -30px rgba(11,42,68,.45); }
 .sc-a figcaption { position: absolute; right: 16px; top: 16px; font: 600 10px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.9); background: rgba(0,0,0,.32); padding: 8px 12px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .sc-b { grid-column: 9 / 13; grid-row: 1; align-self: end; aspect-ratio: 4 / 5; margin-bottom: -18% !important; border-radius: 22px; border: 10px solid var(--paper); box-shadow: 0 30px 60px -20px rgba(11,42,68,.5); transform: rotate(2.5deg); z-index: 2; }
 .sc-card { grid-column: 1 / 10; grid-row: 2; position: relative; z-index: 3; margin: -70px 0 0; padding: clamp(24px, 3vw, 36px); list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 32px); background: var(--navy); color: var(--cream); border-radius: 20px; box-shadow: 0 30px 60px -24px rgba(11,42,68,.6); }
@@ -705,6 +705,78 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   .signup .pill { padding: 14px 16px; }
   .sticker { right: 6px; bottom: -24px; width: 140px; }
 }
+
+/* ---------- Phone polish ---------- */
+section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
+@media (max-width: 760px) {
+  .dots { display: none; }
+  .slider-ui { justify-content: flex-end; gap: 12px; }
+  .statement .float, .join .float { display: none; }
+  .line-art.veg { margin-top: 40px; width: 92%; }
+  .statement, .scenes, .promises, .reviews { padding-top: 76px; padding-bottom: 76px; }
+  .story { padding-top: 76px; padding-bottom: 60px; }
+  .sc-head h2, .pr-head h2, .rv-head h2 { font-size: clamp(34px, 9.4vw, 46px); }
+  .sc-head > p, .pr-head p:not(.label) { font-size: 16.5px; }
+  .sc-collage { margin-top: 36px; }
+  .sc-card { padding: 4px 20px; }
+  .shelf { margin-top: 64px; }
+  .pr-pot { width: 170px; }
+  .process { gap: 14px; margin-top: 36px; }
+  .process li { display: grid; grid-template-columns: 92px 1fr; column-gap: 16px; padding: 16px; align-items: start; border-radius: 18px; }
+  .process figure { grid-row: 1 / span 3; height: 92px; border-radius: 12px; }
+  .process .no { margin-top: 0; font-size: 22px; }
+  .process h3 { font-size: 22px; margin-top: 2px; }
+  .process p { font-size: 14.5px; margin-top: 6px; }
+  .rv-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 36px calc(-1 * var(--gutter)) 0; padding: 18px var(--gutter) 10px; scrollbar-width: none; }
+  .rv-grid::-webkit-scrollbar { display: none; }
+  .review { flex: 0 0 80%; scroll-snap-align: center; padding: 30px 22px 22px; }
+  .review blockquote { font-size: 17px; }
+  .score { padding: 20px 28px; }
+  .line-art.shop { width: 62%; margin-top: 30px; }
+  .facts { margin-top: 48px; }
+  .facts > div { padding: 18px 2px; }
+  .reel { margin-top: 36px; }
+  .reel-tile { width: 64vw; }
+}
+
+/* ---------- Menu button: one clean pill ---------- */
+.menu { inset: 0 0 auto 0; height: calc(100lvh + 120px); padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
+.menu-btn { gap: 12px; height: 46px; padding: 0 7px 0 20px; border: 1.5px solid var(--rust); border-radius: 999px; background: var(--paper); color: var(--rust); transition: background .3s, color .3s, border-color .3s; }
+.menu-btn span, .top:not(.solid) .menu-btn span { padding: 0; border: 0; background: none; color: inherit; }
+.menu-btn i { position: relative; display: block; width: 32px; height: 32px; margin: 0; border-radius: 50%; background: var(--rust); transform: none !important; transition: background .3s; }
+.menu-btn i::before, .menu-btn i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 13px; height: 1.8px; margin: 0 0 0 -6.5px; border-radius: 2px; background: var(--cream); transform: translateY(-3px); transition: transform .35s var(--ease); }
+.menu-btn i::after { transform: translateY(3px); }
+.menu-open .menu-btn i::before { transform: rotate(45deg); }
+.menu-open .menu-btn i::after { transform: rotate(-45deg); }
+.menu-btn:hover { background: var(--rust); color: var(--cream); }
+.menu-btn:hover i { background: var(--cream); }
+.menu-btn:hover i::before, .menu-btn:hover i::after { background: var(--rust); }
+.top:not(.solid) .menu-btn { background: rgba(0,0,0,.18); border-color: rgba(249,238,220,.55); color: var(--cream); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+@media (max-width: 700px) { .menu-btn { height: 42px; padding-left: 16px; gap: 10px; } .menu-btn i { width: 30px; height: 30px; } }
+
+/* phone: shelf tags on one line, cards sized to content */
+@media (max-width: 760px) {
+  .shelf-row .tag { white-space: nowrap; font-size: 9px; letter-spacing: .08em; padding: 6px 6px; margin-top: 24px; }
+  .fc-face { min-height: 0; }
+  .fc-front .fc-hint { margin-top: 14px; }
+}
+
+.js .rv { transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+/* ---------- Smoothness: tubs pass behind the title; lighter effects on phones ---------- */
+.title-card { z-index: 4; }
+.tub-item { will-change: transform; }
+@media (hover: none), (max-width: 760px) {
+  body::after { display: none; }
+  .backdrop { animation: none !important; will-change: auto; }
+  .motes, .steamfx, .fall.fg { display: none; }
+  .tub-item img { filter: drop-shadow(0 18px 14px rgba(0,0,0,.45)); }
+  .float, .sticker { filter: none; }
+  .soups .rail .soup .k, .soups .rail .soup h3, .soups .rail .soup p, .mb-k, .mb-h, .mb-list li, .mb-foot, .scard .k, .scard h3, .fc-back .fc-sub, .fc-back ul, .fc-back .fc-txt { filter: none !important; text-shadow: 0 0 1px rgba(255,255,255,.35), 0 0 8px rgba(255,255,255,.06); }
+  .top.solid { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(252,246,235,.985); }
+  .top:not(.solid) .menu-btn, .tape, .sc-a figcaption { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .disc svg, .shape svg { animation: none; }
+  .process li, .review, .score { transition: none; }
+}
 </style>
 </head>
 <body>
@@ -735,10 +807,10 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       <!-- wrap-around label, shaped like the real tub label -->
       <path d="M27 108 Q120 92 213 108 L202 250 L38 250 Z" fill="#1E3B2A"/>
       <path d="M33 114 Q120 99 207 114 L197 244 L43 244 Z" fill="none" stroke="#C9A86A" stroke-width="1.1" opacity=".75"/>
-      <image href="img/badge-sm.webp?v=3" x="62" y="107" width="116" height="78"/>
-      <rect x="58" y="191" width="124" height="29" rx="3" fill="#F6EEDC" stroke="#C9A86A" stroke-width="1.2"/>
-      <text id="tubName" x="120" y="210.5" text-anchor="middle" font-family="'Libre Baskerville', Georgia, serif" font-style="italic" font-size="12" fill="#1E3B2A">Chicken Noodle</text>
-      <text x="120" y="236" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="7.5" letter-spacing="2.2" fill="#F6EEDC">FAMILY RECIPE</text>
+      <image href="img/badge-sm.webp?v=3" x="69" y="117" width="102" height="68"/>
+      <rect x="58" y="193" width="124" height="28" rx="3" fill="#F6EEDC" stroke="#C9A86A" stroke-width="1.2"/>
+      <text id="tubName" x="120" y="211.5" text-anchor="middle" font-family="'Libre Baskerville', Georgia, serif" font-style="italic" font-size="12" fill="#1E3B2A">Chicken Noodle</text>
+      <text x="120" y="236.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="7.5" letter-spacing="2.2" fill="#F6EEDC">FAMILY RECIPE</text>
       <text x="120" y="265" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="6.5" letter-spacing=".6" fill="#1E3B2A" opacity=".7">NET WT. 16 OZ (1 LB) 454 g</text>
       <!-- lid -->
       <g class="lid">
@@ -831,8 +903,6 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     <!-- Phone set: fewer, bigger -->
     <img class="fall m" src="img/fall/carrots.webp" alt="" style="--x:11%;--y:51%;--w:30vw;--r:-28deg" data-delay="0.1" data-depth="0.6">
     <img class="fall m" src="img/fall/cherry-tomatoes.webp" alt="" style="--x:89%;--y:50%;--w:28vw;--r:14deg" data-delay="0.2" data-depth="0.5">
-    <img class="fall m" src="img/fall/tomato-slice.webp" alt="" style="--x:88%;--y:13%;--w:11vw;--r:-12deg" data-delay="0.35" data-depth="0.8">
-    <img class="fall m" src="img/fall/leaf.webp" alt="" style="--x:12%;--y:13%;--w:9vw;--r:40deg" data-delay="0.4" data-depth="0.9">
     <img class="fall m" src="img/fall/garlic.webp" alt="" style="--x:12%;--y:91%;--w:20vw;--r:12deg;--z:3" data-delay="0.85" data-depth="0.4">
 
     <!-- Foreground ingredients, out of focus (depth of field) -->
@@ -883,11 +953,11 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 
       <div class="sc-collage">
         <figure class="sc-a rv">
-          <img src="img/scenes/spinach-table.webp" alt="A Boulevard Soup Co. Creamy Spinach tub on a wooden table with fresh spinach, cream, parmesan and a bowl of soup" loading="lazy" width="1672" height="941">
+          <img src="img/scenes/spinach-table.webp?v=2" alt="A Boulevard Soup Co. Creamy Spinach tub on a wooden table with fresh spinach, cream, parmesan and a bowl of soup" loading="lazy" width="1600" height="1067">
           <figcaption>Packaging concept</figcaption>
         </figure>
         <figure class="sc-b rv d2">
-          <img src="img/scenes/ladle.webp" alt="Ladling creamy spinach soup into a bowl" loading="lazy" width="700" height="941">
+          <img src="img/scenes/ladle.webp?v=2" alt="Ladling creamy spinach soup into a bowl" loading="lazy" width="700" height="1278">
         </figure>
         <ol class="sc-card rv d3">
           <li><span>01</span><div><b>A clear tub</b><p>See the noodles, the beans, the greens. Nothing hidden behind a label.</p></div></li>
@@ -1458,7 +1528,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     </div>
     <div class="reel" aria-label="Photos from Boulevard Bistro">
       <p class="reel-cap">From the bistro kitchen</p>
-      <div class="reel-track"><figure class="reel-tile"><img src="img/bistro/plate1.webp" alt="Breakfast plate at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/story/chalkboard.webp" alt="The soup of the day chalkboard" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate2.webp" alt="Omelette and potatoes at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate3.webp" alt="A skillet at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/story/storefront.webp" alt="The Boulevard Bistro storefront on Western Ave" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate4.webp" alt="French toast at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate5.webp" alt="A salad at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/scenes/bowl.webp" alt="A bowl of creamy spinach soup" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate1.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/story/chalkboard.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate2.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate3.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/story/storefront.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate4.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate5.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/scenes/bowl.webp" alt="" loading="lazy"></figure></div>
+      <div class="reel-track"><figure class="reel-tile"><img src="img/bistro/plate1.webp" alt="Breakfast plate at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/story/chalkboard.webp" alt="The soup of the day chalkboard" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate2.webp" alt="Omelette and potatoes at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate3.webp" alt="A skillet at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/story/storefront.webp" alt="The Boulevard Bistro storefront on Western Ave" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate4.webp" alt="French toast at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/bistro/plate5.webp" alt="A salad at Boulevard Bistro" loading="lazy"></figure><figure class="reel-tile"><img src="img/scenes/bowl.webp?v=2" alt="A bowl of creamy spinach soup" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate1.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/story/chalkboard.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate2.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate3.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/story/storefront.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate4.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/bistro/plate5.webp" alt="" loading="lazy"></figure><figure class="reel-tile" aria-hidden="true"><img src="img/scenes/bowl.webp?v=2" alt="" loading="lazy"></figure></div>
     </div>
   </section>
 
@@ -1545,6 +1615,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lite = window.matchMedia('(hover: none), (max-width: 760px)').matches;
   var root = document.documentElement;
   var loader = document.getElementById('loader');
   var pctEl = document.getElementById('pct');
@@ -1705,7 +1776,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     }
   }
   buildTubs();
-  var rT; window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(function () { buildTubs(); kick(); }, 200); });
+  var rT, lastW = window.innerWidth; window.addEventListener('resize', function () { if (Math.abs(window.innerWidth - lastW) < 2) return; lastW = window.innerWidth; clearTimeout(rT); rT = setTimeout(function () { buildTubs(); kick(); }, 200); });
 
   var running = false, last = 0, start = 0, lastSy = window.scrollY;
   var mx = 0, my = 0, tmx = 0, tmy = 0;
@@ -1765,7 +1836,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       var waiting = !it.settled && t < it.delay;
       var x = mod(it.base - offset + W / 2, total) - spacing;
       var d = Math.abs(x - W / 2) / W;
-      var blur = Math.min(5, Math.max(0, d - .28) * 11);
+      var blur = lite ? 0 : Math.min(5, Math.max(0, d - .28) * 11);
       var sc = 1 - Math.min(.18, d * .2);
       var ar = W / H; var base = Math.max(H * (W < 700 ? .6 : ar < 1.2 ? .64 : .66) - it.h / 2, titleBottom + 8); var cy = base + (it.yo + 34) * .5;
       var age = it.born ? (now - it.born) / 1000 : 0;
@@ -1868,7 +1939,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
   // ---------- Reveal on scroll ----------
   var rv = document.querySelectorAll('.rv');
   if ('IntersectionObserver' in window && !reduce) {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px 12% 0px', threshold: 0 });
     rv.forEach(function (e) { io.observe(e); });
   } else { rv.forEach(function (e) { e.classList.add('in'); }); }
 })();
