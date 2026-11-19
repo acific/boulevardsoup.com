@@ -624,6 +624,12 @@ html.js:not(.ready) body { background: var(--cream); }
 .steps h2 { font-size: clamp(40px, 5vw, 76px); margin-top: 20px; }
 .steps h2 .it { color: #E39A7E; }
 .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid rgba(249,238,220,.2); }
+.get-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 400px); gap: clamp(30px, 5vw, 80px); align-items: center; }
+.bag { margin: 0; }
+.bag-card { background: #fffdf8; padding: 12px 12px 0; transform: rotate(2.4deg); box-shadow: 0 2px 2px rgba(0,0,0,.08), 0 24px 50px rgba(0,0,0,.35); }
+.bag-card img { width: 100%; height: auto; display: block; }
+.bag-card figcaption { font: 700 clamp(22px, 2vw, 28px)/1.1 'Caveat', cursive; color: var(--navy); text-align: center; padding: 12px 6px 16px; }
+@media (max-width: 760px) { .get-head { grid-template-columns: minmax(0, 1fr); } .bag { max-width: 340px; margin: 4px auto 0; width: 88%; } }
 .step { padding: 40px clamp(20px, 3vw, 44px) 0 0; }
 .step + .step { padding-left: clamp(20px, 3vw, 44px); border-left: 1px solid rgba(249,238,220,.2); }
 .step .n { font: 400 clamp(72px, 7.5vw, 116px)/.85 var(--display); color: #E39A7E; }
@@ -1584,8 +1590,13 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
 
   <section class="steps" id="get-it" aria-labelledby="get-title">
     <div class="wrap">
-      <p class="label light left rv">How to get it</p>
-      <h2 id="get-title" class="rv d1">Starting <span class="it">close to home.</span></h2>
+      <div class="get-head">
+        <div>
+          <p class="label light left rv">How to get it</p>
+          <h2 id="get-title" class="rv d1">Starting <span class="it">close to home.</span></h2>
+        </div>
+        <figure class="bag rv d2"><div class="bag-card"><img src="img/scenes/bag.webp" alt="A Boulevard Soup Co. kraft to-go bag with the Chicago skyline logo" loading="lazy" decoding="async" width="880" height="805"><figcaption>Packed for pickup</figcaption></div></figure>
+      </div>
       <div class="row">
         <div class="step now rv"><div class="n">1</div><p class="when">First</p><h3>Pre-order &amp; pickup</h3><p>Order ahead online, pick up frozen tubs in the neighborhood.</p></div>
         <div class="step rv d1"><div class="n">2</div><p class="when">Next</p><h3>Local delivery</h3><p>Soup brought to your door across Chicago.</p></div>
