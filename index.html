@@ -764,6 +764,10 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
   .fc-front .fc-hint { margin-top: 14px; }
 }
 
+/* soup cards: long names wrap neatly instead of stretching the card */
+.scard .fc-inner { grid-template-columns: minmax(0, 1fr); }
+.fc-face { min-width: 0; }
+.scard h3 { white-space: normal; overflow: visible; text-wrap: balance; line-height: 1.02; }
 /* ---------- Smoothness: tubs pass behind the title; lighter effects on phones ---------- */
 .title-card { z-index: 4; }
 .tub-item { will-change: transform; filter: drop-shadow(0 30px 26px rgba(0,0,0,.42)) drop-shadow(0 5px 7px rgba(0,0,0,.25)); }
@@ -1000,7 +1004,7 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
             <p class="label light left rv">The soups</p>
             <h2 id="soups-title" class="rv d1">Straight from <span class="it">the board.</span></h2>
           </div>
-          <p class="rv d2">Our first soups are the ones regulars ask for by name. The full lineup is announced when pre-orders open.</p>
+          <p class="rv d2">All 23 family recipes, the same soups regulars order by name at the counter. Tap any card to see what goes in the pot.</p>
         </div>
       </div>
       <div class="rail" id="rail" tabindex="0" role="region" aria-label="All 23 soups, swipe or use the arrows">
@@ -1583,7 +1587,7 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
       <p class="label light left rv">How to get it</p>
       <h2 id="get-title" class="rv d1">Starting <span class="it">close to home.</span></h2>
       <div class="row">
-        <div class="step now rv"><div class="n">1</div><p class="when">First</p><h3>Pre-order &amp; pickup</h3><p>Order ahead online, pick up frozen quarts in the neighborhood.</p></div>
+        <div class="step now rv"><div class="n">1</div><p class="when">First</p><h3>Pre-order &amp; pickup</h3><p>Order ahead online, pick up frozen tubs in the neighborhood.</p></div>
         <div class="step rv d1"><div class="n">2</div><p class="when">Next</p><h3>Local delivery</h3><p>Soup brought to your door across Chicago.</p></div>
         <div class="step rv d2"><div class="n">3</div><p class="when">Later</p><h3>Neighborhood shops</h3><p>A freezer case near you, if the first two go well.</p></div>
       </div>
