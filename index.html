@@ -444,25 +444,6 @@ html.js:not(.ready) body { background: var(--cream); }
 .mb-foot { position: relative; margin: clamp(22px, 3vw, 34px) 0 0; font: 500 22px/1.2 'Caveat', cursive; color: rgba(244,241,234,.8); filter: url(#chalkify); }
 @media (max-width: 760px) { .board { border-width: 12px; padding-left: 18px; padding-right: 18px; } .mb-list { columns: 1; } .mb-list li { font-size: min(22px, 5.6vw); } }
 
-/* ---------- Soups spin to show their back ---------- */
-.tubs { pointer-events: none; }
-.tub-item { pointer-events: auto; cursor: pointer; perspective: 1400px; }
-.tub-3d { position: relative; transform-style: preserve-3d; transition: transform .9s cubic-bezier(.3,.9,.2,1); container-type: inline-size; }
-.tub-item.flip .tub-3d { transform: rotateY(180deg); }
-.tub-3d .tf, .tub-3d .tb { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.tub-3d .tf { display: block; width: 100%; height: auto; }
-.tub-3d .tb { position: absolute; inset: 0; transform: rotateY(180deg); }
-.tub-3d .tb img { width: 100%; height: auto; display: block; transform: scaleX(-1); filter: drop-shadow(0 34px 28px rgba(0,0,0,.5)); }
-.tub-3d .tf { filter: drop-shadow(0 34px 28px rgba(0,0,0,.5)) drop-shadow(0 6px 8px rgba(0,0,0,.3)); }
-.tb-label { position: absolute; left: 12%; right: 12%; top: 33%; bottom: 17%; background: #F6EEDC; border: .6cqw solid #0B2A44; border-radius: 2cqw; box-shadow: inset 0 0 0 1.2cqw #F6EEDC, inset 0 0 0 1.5cqw #8B3A2B; padding: 5cqw 5cqw 4cqw; color: #0B2A44; text-align: center; display: flex; flex-direction: column; gap: 2.2cqw; overflow: hidden; }
-.tb-label b { font: italic 400 8.5cqw/1 var(--italic); color: #8B3A2B; }
-.tb-label i { height: .4cqw; background: #8B3A2B; margin: 0 18%; opacity: .7; }
-.tb-label p { margin: 0; font: 400 4.6cqw/1.3 var(--italic); }
-.tb-ic { display: flex; justify-content: space-between; border-top: .3cqw solid rgba(139,58,43,.5); border-bottom: .3cqw solid rgba(139,58,43,.5); padding: 2cqw 0; }
-.tb-ic span { flex: 1; font: 700 2.9cqw/1.15 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
-.tb-label .tb-heat { font: 600 3.4cqw/1.3 var(--sans); }
-.tb-bar { margin: auto auto 0; width: 44%; height: 7cqw; background: repeating-linear-gradient(90deg, #0B2A44 0 .5cqw, transparent .5cqw 1.1cqw, #0B2A44 1.1cqw 1.4cqw, transparent 1.4cqw 2.1cqw); }
-
 /* chalkboard flip cards for all 23 soups */
 #soups .rail .scard { flex: 0 0 auto; width: clamp(270px, 25vw, 340px); scroll-snap-align: start; perspective: 1600px; cursor: pointer; outline: none; }
 .scard .fc-inner { position: relative; display: grid; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.3,.9,.2,1); }
@@ -483,7 +464,7 @@ html.js:not(.ready) body { background: var(--cream); }
 .fc-back li::marker { color: #9cc6e4; }
 .fc-back .fc-txt { margin: 0; font: 500 20px/1.25 'Caveat', cursive; color: rgba(244,241,234,.88); filter: url(#chalkify); }
 @media (max-width: 700px) { #soups .rail .scard { width: 78vw; } .scard h3 { font-size: min(34px, 8vw); } }
-@media (prefers-reduced-motion: reduce) { .scard .fc-inner, .tub-3d { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .scard .fc-inner { transition: none; } }
 
 /* ---------- Line engravings + reviews ---------- */
 .line-art { display: block; height: auto; margin-left: auto; margin-right: auto; pointer-events: none; }
@@ -1583,7 +1564,6 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     '</svg>';
   }
 
-  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches, hoverFlip = 0;
   var REAL_TUBS = [['t7', 719 / 760], ['t6', 690 / 760], ['t8a', 668 / 760], ['t9', 643 / 760], ['t8b', 614 / 760]];
   var tubsEl = document.getElementById('tubs');
   var ROTS = [-16, 9, -7, 15, -11, 6, -14, 10];
@@ -1608,10 +1588,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
       d.className = 'tub-item';
       d.style.width = tw + 'px';
       var R = REAL_TUBS[i % REAL_TUBS.length];
-      d.innerHTML = '<div class="tub-3d"><img class="tf" src="img/tubs/' + R[0] + '.webp" alt="" draggable="false" width="' + Math.round(R[1] * 760) + '" height="760"><div class="tb"><img src="img/tubs/' + R[0] + '.webp" alt="" draggable="false"><div class="tb-label"><b>Our Story</b><i></i><p>Made from scratch in a family kitchen on a Chicago corner, a few pots at a time.</p><div class="tb-ic"><span>From scratch</span><span>Small batch</span><span>Family recipe</span></div><p class="tb-heat">Heat gently on the stove until hot.</p><div class="tb-bar"></div></div></div></div>';
-      d.addEventListener('mouseenter', function () { if (finePointer) { this.classList.add('flip'); hoverFlip++; } });
-      d.addEventListener('mouseleave', function () { if (this.classList.contains('flip') && finePointer) { this.classList.remove('flip'); hoverFlip = Math.max(0, hoverFlip - 1); } });
-      d.addEventListener('click', function () { if (!finePointer) this.classList.toggle('flip'); });
+      d.innerHTML = '<img src="img/tubs/' + R[0] + '.webp" alt="" draggable="false" width="' + Math.round(R[1] * 760) + '" height="760">';
       tubsEl.appendChild(d);
       tubs.push({ el: d, base: i * spacing, w: tw, h: tw / R[1], rot: ROTS[i % ROTS.length], yo: YOS[i % YOS.length] * (mobile ? .5 : 1), phase: i * 1.3, y: 0, vy: 0, settled: true, delay: 0, spin: 0, blur: -1 });
     }
@@ -1671,7 +1648,7 @@ footer { background: var(--paper); padding: clamp(70px, 8vw, 110px) 0 0; overflo
     mx += (tmx - mx) * Math.min(1, dt * 4); my += (tmy - my) * Math.min(1, dt * 4);
     if (backEl) backEl.style.translate = (-mx * 18).toFixed(1) + 'px ' + (-my * 10 + sy * .25).toFixed(1) + 'px';
     if (titleEl) titleEl.style.translate = (-mx * 8).toFixed(1) + 'px ' + (-my * 5 - sy * .15).toFixed(1) + 'px';
-    if (!reduce) offset += dt * (W < 700 ? 24 : 32) * (hoverFlip ? .08 : 1) + dsy * 0.9;
+    if (!reduce) offset += dt * (W < 700 ? 24 : 32) + dsy * 0.9;
     tubs.forEach(function (it) {
       if (!it.settled && t >= it.delay) step(it, dt);
       var waiting = !it.settled && t < it.delay;
