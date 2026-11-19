@@ -209,25 +209,22 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 120; pointer-even
 /* ---------- Story: polaroids ---------- */
 .story { background: radial-gradient(80% 60% at 20% 40%, rgba(255,255,255,.7), transparent 70%), var(--paper); }
 .story .grid { grid-template-columns: 1.25fr 1fr; gap: clamp(40px, 5vw, 90px); }
-.snaps { position: relative; aspect-ratio: 1 / 1.62; }
+.snaps { position: relative; aspect-ratio: 1 / 1.16; }
 /* real-polaroid look: square photo, thick bottom lip, marker caption, tape */
 .pol { position: absolute; margin: 0; width: var(--w, 34%); left: var(--x); top: var(--y); z-index: var(--z, 2); padding: clamp(8px, .95vw, 14px) clamp(8px, .95vw, 14px) 0; background: linear-gradient(170deg, #fffefa 0%, #faf5ea 60%, #f3ecdc 100%); box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 10px 18px -6px rgba(11,42,68,.22), 0 30px 60px -18px rgba(11,42,68,.35); transform: rotate(var(--r, 0deg)); transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
 .pol img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: var(--op, 50% 50%); display: block; background: #222; filter: saturate(1.06) contrast(1.04) sepia(.06); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
 .pol.wide img { aspect-ratio: 4 / 3; }
-.pol figcaption { display: flex; align-items: center; justify-content: center; min-height: 3.1em; padding: .35em .3em .55em; font: 400 clamp(14px, 1.25vw, 19px)/1.15 'Permanent Marker', 'Caveat', cursive; color: #1d2a3a; text-align: center; transform: rotate(var(--cr, -1.5deg)); }
+.pol figcaption { display: flex; align-items: center; justify-content: center; min-height: 3.1em; padding: .35em .3em .55em; font: 400 clamp(13px, 1.1vw, 17px)/1.15 'Permanent Marker', 'Caveat', cursive; color: #1d2a3a; text-align: center; transform: rotate(var(--cr, -1.5deg)); }
 .pol figcaption.red { color: var(--rust); }
 .pol figcaption span { color: var(--rust); margin-left: .25em; }
 .pol::before { content: ""; position: absolute; top: -13px; left: 50%; width: 42%; height: 26px; background: rgba(246,236,214,.78); box-shadow: 0 1px 2px rgba(0,0,0,.1); transform: translateX(-50%) rotate(var(--t, -3deg)); z-index: 2; }
 .pol.corner::before { left: -6%; top: -4px; width: 32%; transform: rotate(-38deg); }
 .pol:hover { transform: rotate(calc(var(--r, 0deg) * .4)) translateY(-8px) scale(1.04); z-index: 9; box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 18px 28px -8px rgba(11,42,68,.28), 0 46px 80px -20px rgba(11,42,68,.42); }
-.pol-1 { --x: -2%; --y: 1%;  --w: 44%; --r: -7deg; --z: 2; --op: 50% 18%; }
-.pol-2 { --x: 30%; --y: 0%;  --w: 36%; --r: 3.5deg; --z: 5; --op: 50% 40%; --t: 4deg; }
-.pol-3 { --x: 61%; --y: 4%;  --w: 40%; --r: 8deg; --z: 3; --cr: 2deg; }
-.pol-4 { --x: -1%; --y: 37%; --w: 56%; --r: 2.5deg; --z: 5; --cr: -1deg; }
-.pol-5 { --x: 52%; --y: 39%; --w: 44%; --r: -5deg; --z: 4; --op: 50% 30%; --t: -6deg; }
-.pol-6 { --x: 3%;  --y: 69%; --w: 42%; --r: -3deg; --z: 6; --cr: 1deg; }
-.pol-7 { --x: 50%; --y: 71%; --w: 45%; --r: 4deg; --z: 5; --op: 50% 0%; --t: 3deg; }
-.snaps .sticker { right: -5%; left: auto; top: -3%; bottom: auto; width: clamp(110px, 11vw, 160px); transform: rotate(10deg); z-index: 8; }
+.pol-4 { --x: 22%; --y: 0%;  --w: 76%; --r: 2.5deg; --z: 2; --t: -2deg; }
+.pol-2 { --x: 0%;  --y: 4%;  --w: 33%; --r: -6deg; --z: 3; --op: 50% 30%; --t: 5deg; }
+.pol-1 { --x: 1%;  --y: 50%; --w: 38%; --r: -3deg; --z: 4; --op: 50% 18%; }
+.pol-3 { --x: 49%; --y: 56%; --w: 42%; --r: 6deg; --z: 4; --cr: 2deg; --t: -5deg; }
+.snaps .sticker { right: -4%; left: auto; top: -6%; bottom: auto; width: clamp(100px, 9vw, 140px); transform: rotate(10deg); z-index: 6; }
 .story h2 { font-size: clamp(38px, 4vw, 62px); }
 @media (max-width: 900px) {
   .story .grid { grid-template-columns: 1fr; }
@@ -236,7 +233,10 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 120; pointer-even
 @media (max-width: 600px) {
   .pol figcaption { font-size: 12px; min-height: 2.8em; padding: .3em .2em .45em; }
   .pol::before { height: 16px; top: -8px; }
-  .snaps .sticker { width: 86px; right: -2%; top: -4%; }
+  .snaps .sticker { width: 78px; right: -2%; top: -5%; }
+  .snaps { aspect-ratio: 1 / 1.22; }
+  .pol-1 { --y: 55%; }
+  .pol-3 { --y: 59%; }
 }
 }
 @media (hover: none) { .pol:hover { transform: rotate(var(--r, 0deg)); box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 10px 18px -6px rgba(11,42,68,.22), 0 30px 60px -18px rgba(11,42,68,.35); } }
@@ -1526,18 +1526,6 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
         <figure class="pol pol-4 wide">
           <img src="img/story/storefront.webp?v=2" alt="The family's breakfast and lunch spot on Western Ave" loading="lazy" decoding="async" width="1200" height="900">
           <figcaption>Our corner of Western Ave</figcaption>
-        </figure>
-        <figure class="pol pol-5">
-          <img src="img/bistro/soup-menu.webp" alt="Adam's Famous Soups on the bistro menu: cup, bowl, pint and quart to-go" loading="lazy" decoding="async" width="640" height="480">
-          <figcaption class="red">Famous for a reason</figcaption>
-        </figure>
-        <figure class="pol pol-6 corner">
-          <img src="img/bistro/plate4.webp" alt="French toast at the bistro" loading="lazy" decoding="async">
-          <figcaption>French toast, every day</figcaption>
-        </figure>
-        <figure class="pol pol-7">
-          <img src="img/bistro/breakfast-menu.webp" alt="The bistro's breakfast menu" loading="lazy" decoding="async" width="640" height="480">
-          <figcaption class="red">Hungry yet? <span aria-hidden="true">&#9786;</span></figcaption>
         </figure>
         <img class="sticker" src="img/badge.webp?v=3" alt="" loading="lazy" decoding="async" width="600" height="401">
       </div>
