@@ -1780,7 +1780,7 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
     '</svg>';
   }
 
-  var REAL_TUBS = [['chicken-noodle', 544 / 760], ['tomato-bisque', 518 / 760], ['creamy-spinach', 659 / 760], ['potato-bacon', 583 / 760], ['minestrone', 595 / 760], ['chili', 590 / 760], ['lemon-chicken', 543 / 760], ['beef-goulash', 526 / 760], ['cheese-spinach-squash', 585 / 760], ['mushroom-barley', 598 / 760], ['tomato-basil', 524 / 760]];
+  var REAL_TUBS = [['chicken-noodle', 544 / 760], ['tomato-bisque', 518 / 760], ['creamy-spinach', 659 / 760], ['potato-bacon', 583 / 760], ['minestrone', 595 / 760], ['chili', 590 / 760], ['lemon-chicken', 543 / 760], ['beef-goulash', 526 / 760], ['cheese-spinach-squash', 600 / 760], ['mushroom-barley', 598 / 760], ['tomato-basil', 524 / 760]];
   var tubsEl = document.getElementById('tubs');
   var ROTS = [-16, 9, -7, 15, -11, 6, -14, 10];
   var YOS = [36, -24, 44, -12, 24, -34, 30, -18];
@@ -1804,7 +1804,7 @@ section[id], [id$="-title"], #all-soups { scroll-margin-top: 96px; }
       d.className = 'tub-item';
       d.style.width = tw + 'px';
       var R = REAL_TUBS[i % REAL_TUBS.length];
-      d.innerHTML = '<img src="img/tubs/' + R[0] + '.webp?v=3" alt="" draggable="false" width="' + Math.round(R[1] * 760) + '" height="760">';
+      d.innerHTML = '<img src="img/tubs/' + R[0] + '.webp?v=4" alt="" draggable="false" width="' + Math.round(R[1] * 760) + '" height="760">';
       tubsEl.appendChild(d);
       tubs.push({ el: d, base: i * spacing, w: tw, h: tw / R[1], rot: ROTS[i % ROTS.length], yo: YOS[i % YOS.length] * (mobile ? .5 : 1), phase: i * 1.3, y: 0, vy: 0, settled: true, delay: 0, spin: 0, blur: -1 });
     }
